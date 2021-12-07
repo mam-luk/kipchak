@@ -1,0 +1,27 @@
+{
+  "name": "7xax/microservice-components",
+  "type": "library",
+  "description": "A PHP Library to consistently build microservices and APIs",
+  "keywords": [
+    "APIs",
+    "microservices"
+  ],
+  "homepage": "https://7x.ax",
+  "license": "GPL-3.0-or-later",
+  "config": {
+    "sort-packages": true
+  },
+  "autoload": {
+    "psr-4": {
+      "x7x\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "x7x\\Tests\\": "tests/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.2"
+  }
+}
