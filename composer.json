@@ -23,5 +23,8 @@
   },
   "require-dev": {
     "phpunit/phpunit": "^9.2"
+  },
+  "require": {
+    "slim/psr7": "^1.5"
   }
 }

@@ -1,9 +1,11 @@
 <?php
 namespace x7x\Components\Http;
 
+use Psr\Http\Message\ResponseInterface;
+
 class Response
 {
-    public static function build(mixed $data, int $code)
+    public static function build(mixed $data, int $code): array
     {
         return
             [
@@ -11,5 +13,14 @@ class Response
                 'status' => Codes::getCode($code),
                 'data' => $data
             ];
+    }
+
+    public static function slimJson(ResponseInterface $response, mixed $data, int $code): ResponseInterface
+    {
+        $response->getBody()->write(
+                self::build(json_encode($data), $code)
+        );
+
+        return $response->withStatus($code);
     }
 }
