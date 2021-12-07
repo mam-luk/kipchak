@@ -18,7 +18,7 @@ class Response
     public static function slimJson(ResponseInterface $response, mixed $data, int $code): ResponseInterface
     {
         $response->getBody()->write(
-                self::build(json_encode($data), $code)
+                json_encode(self::build($data, $code))
         );
 
         return $response->withStatus($code);
