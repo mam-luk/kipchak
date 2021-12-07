@@ -3,7 +3,7 @@ namespace x7x\Components\Http;
 
 class Response
 {
-    public static function build(string $data, int $code)
+    public static function build(mixed $data, int $code)
     {
         return
             [
