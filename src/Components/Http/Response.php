@@ -21,6 +21,8 @@ class Response
                 json_encode(self::build($data, $code))
         );
 
-        return $response->withStatus($code);
+        return $response->withHeader('Content-Type', 'application/json')
+            ->withStatus($code);
+
     }
 }
