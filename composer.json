@@ -13,7 +13,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Meezaan\\Microservice\\Components\\": "src/"
+      "Meezaan\\Microservice\\": "src/"
     }
   },
   "autoload-dev": {
