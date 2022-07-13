@@ -1,6 +1,6 @@
 <?php
 
-namespace x7x\Components\Http;
+namespace Meezaan\Microservice\Components\Http;
 
 /**
  * Class Codes

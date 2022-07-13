@@ -1,24 +1,24 @@
 {
-  "name": "7xax/microservice-components",
+  "name": "meezaan/microservice-components",
   "type": "library",
   "description": "A PHP Library to consistently build microservices and APIs",
   "keywords": [
     "APIs",
     "microservices"
   ],
-  "homepage": "https://7x.ax",
+  "homepage": "https://meezaan.net",
   "license": "GPL-3.0-or-later",
   "config": {
     "sort-packages": true
   },
   "autoload": {
     "psr-4": {
-      "x7x\\": "src/"
+      "Meezaan\\Microservice\\Components\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "x7x\\Tests\\": "tests/"
+      "Meezaan\\Microservice\\Tests\\": "tests/"
     }
   },
   "require-dev": {

@@ -1,5 +1,5 @@
 <?php
-namespace x7x\Components\Http;
+namespace Meezaan\Microservice\Components\Http;
 
 use Psr\Http\Message\ResponseInterface;
 
@@ -15,7 +15,7 @@ class Response
             ];
     }
 
-    public static function slimJson(ResponseInterface $response, mixed $data, int $code): ResponseInterface
+    public static function json(ResponseInterface $response, mixed $data, int $code): ResponseInterface
     {
         $response->getBody()->write(
                 json_encode(self::build($data, $code))
