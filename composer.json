@@ -11,6 +11,17 @@
   "config": {
     "sort-packages": true
   },
+  "require": {
+    "php": "8.*",
+    "slim/psr7": "^1.5",
+    "slim/slim": "4.*",
+    "guzzlehttp/guzzle": "^7.0",
+    "monolog/monolog": "^3.2",
+    "php-di/php-di": "^6.4"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.5"
+  },
   "autoload": {
     "psr-4": {
       "Meezaan\\Microservice\\": "src/"
@@ -20,11 +31,5 @@
     "psr-4": {
       "Meezaan\\Microservice\\Tests\\": "tests/"
     }
-  },
-  "require-dev": {
-    "phpunit/phpunit": "^9.2"
-  },
-  "require": {
-    "slim/psr7": "^1.5"
   }
 }
