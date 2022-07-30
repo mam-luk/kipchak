@@ -1,11 +1,17 @@
 <?php
 namespace Meezaan\Microservice\Helpers;
+use RecursiveIteratorIterator;
+use RecursiveDirectoryIterator;
 
 class Config
 {
-    public static function get(string $name)
+    public $config;
+
+    public function __construct()
     {
-        $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(realpath(__DIR__) . '/../../../../config'));
+        $configDir = realpath(__DIR__ . '/../../../../../config')  ;
+
+        $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($configDir));
         $configs = array_keys(array_filter(iterator_to_array($iterator), function($file) {
             return $file->isFile();
         }));
@@ -16,6 +22,12 @@ class Config
             }
         }
 
-        var_dump($config);
+        $this->config = $config;
+
+    }
+
+    public function get(string $name)
+    {
+        return $this->config[$name];
     }
 }
