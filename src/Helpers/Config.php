@@ -9,7 +9,7 @@ class Config
 
     public function __construct()
     {
-        $configDir = realpath(__DIR__ . '/../../../../../config')  ;
+        $configDir = realpath(__DIR__ . '/../../../../../config');
 
         $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($configDir));
         $configs = array_keys(array_filter(iterator_to_array($iterator), function($file) {
