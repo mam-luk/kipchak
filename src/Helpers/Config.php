@@ -27,8 +27,18 @@ class Config
 
     }
 
-    public function get(string $name)
+    public function get(string $name = null): mixed
     {
-        return $this->config[$name];
+        if ($name === null) {
+            return $this->config;
+        }
+
+        if ($name !== null && isset($this->config[$name])) {
+            return $this->config[$name];
+        }
+
+        // Could not find config param, return null
+        return null;
     }
+
 }
