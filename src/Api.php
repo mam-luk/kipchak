@@ -1,5 +1,6 @@
 <?php
-namespace Meezaan\Microservice\Helpers;
+namespace Meezaan\Microservice;
+
 use RecursiveIteratorIterator;
 use RecursiveDirectoryIterator;
 
