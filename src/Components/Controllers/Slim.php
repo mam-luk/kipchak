@@ -8,7 +8,7 @@ use Psr\Container\ContainerInterface;
 class Slim
 {
     /**
-     * @var ContainerInterface 
+     * @var ContainerInterface
      */
     protected $container;
 
