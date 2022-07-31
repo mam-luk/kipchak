@@ -1,6 +1,8 @@
 <?php
 namespace Meezaan\Microservice;
 
+use Slim\Factory\AppFactory;
+use DI\Container;
 use RecursiveIteratorIterator;
 use RecursiveDirectoryIterator;
 
@@ -8,6 +10,13 @@ class Api
 {
     public static function boot()
     {
+        // Create DI Container and App
+        $container = new Container();
+        AppFactory::setContainer($container);
+        $app = AppFactory::create();
+        $app->addRoutingMiddleware();
+        $container = $app->getContainer();
+
         /** Load all the dependency files in the /routes folder of this project **/
         $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(realpath(__DIR__ . '/../dependencies')));
         $dependencies = array_keys(array_filter(iterator_to_array($iterator), function($file) {
