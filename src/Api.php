@@ -2,13 +2,14 @@
 namespace Meezaan\Microservice;
 
 use Slim\Factory\AppFactory;
+use Slim\App;
 use DI\Container;
 use RecursiveIteratorIterator;
 use RecursiveDirectoryIterator;
 
 class Api
 {
-    public static function boot()
+    public static function boot(): App
     {
         // Create DI Container and App
         $container = new Container();
@@ -17,6 +18,16 @@ class Api
         $app->addRoutingMiddleware();
         $container = $app->getContainer();
 
+        self::loadDependencies($app, $container);
+        self::loadMiddlewares($app, $container);
+        self::loadRoutes($app, $container);
+
+        return $app;
+    }
+
+    public static function loadDependencies(App $app): void
+    {
+        $container = $app->getContainer();
         /** Load all the dependency files in the /routes folder of this project **/
         $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(realpath(__DIR__ . '/../dependencies')));
         $dependencies = array_keys(array_filter(iterator_to_array($iterator), function($file) {
@@ -40,7 +51,11 @@ class Api
             }
         }
         /***/
+    }
 
+    public static function loadMiddlewares(App $app): void
+    {
+        $container = $app->getContainer();
         /** Load all the middleware files in the /routes folder of this project **/
         $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(realpath(__DIR__ . '/../middlewares')));
         $middlewares = array_keys(array_filter(iterator_to_array($iterator), function($file) {
@@ -64,10 +79,11 @@ class Api
             }
         }
         /***/
+    }
 
-
-
-
+    public static function loadRoutes(App $app): void
+    {
+        $container = $app->getContainer();
         /** Load all the routes files in the /routes folder of this project **/
         $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(realpath(__DIR__ . '/../../../../routes')));
         $routes = array_keys(array_filter(iterator_to_array($iterator), function($file) {
