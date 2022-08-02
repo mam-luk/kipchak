@@ -75,35 +75,10 @@ class AuthJwks
                 }
             }
         } else {
-            // No Authorization header, so do nothing.
+            // No Authorization header or JWT auth is disabled in config, so do nothing.
             $response = $handler->handle($request);
             return $response;
         }
-    }
-
-    private function decode(string $jwt, string $jwksUri): \stdClass
-    {
-        $jwks = json_decode(file_get_contents($jwksUri), true);
-
-        return JWT::decode($jwt,
-            JWK::parseKeySet($jwks)
-        );
-
-    }
-
-    private function hasScopes(string $inToken, array $required): bool
-    {
-        $in = explode(' ', $inToken);
-        foreach ($in as $scope) {
-            // Return true even if 1 scope matches.
-            if (in_array($scope, $required)) {
-                return true;
-            }
-        }
-
-        return false;
-
-
     }
 
 }
