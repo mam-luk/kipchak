@@ -39,7 +39,7 @@ class AuthKey
             $response = new Response();
             $key = isset($request->getHeader('x-api-key')[0]) ?
                 $request->getHeader('x-api-key')[0] :
-                Http\Request::getQueryParam('key');
+                Http\Request::getQueryParam($request, 'key');
 
             if (!in_array($key, $apiConfig['auth']['key']['authorised_keys'])) {
                 return Http\Response::json($response,
