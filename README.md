@@ -1,2 +1,1 @@
-![Kipchak by Mamluk - an API Toolkit](/.mamluk/logo.svg|height=100px)
-<img src=".mamluk/logo.svg" height="128" />
+<img src=".mamluk/logo.svg" alt="Kipchak by Mamluk" title="Kipchak by Mamluk - an API Toolkit" height="128" />
