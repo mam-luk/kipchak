@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Meezaan\Microservice\Middlewares;
+namespace Meezaan\Microservice\Components\Middlewares;
 
 use Meezaan\Microservice\Components\Http;
 use Psr\Container\ContainerInterface;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Meezaan\Microservice\Helpers;
+namespace Meezaan\Microservice\Components\Helpers;
 
 use Firebase\JWT\JWK;
 use Firebase\JWT\JWT;

@@ -1,5 +1,5 @@
 <?php
-namespace Meezaan\Microservice\Helpers;
+namespace Meezaan\Microservice\Components\Helpers;
 
 class Env
 {
