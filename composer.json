@@ -1,13 +1,13 @@
 {
-  "name": "meezaan/microservice-components",
+  "name": "mamluk/kipchak",
   "type": "library",
   "description": "A PHP Library to consistently build microservices and APIs",
   "keywords": [
     "APIs",
     "microservices"
   ],
-  "homepage": "https://meezaan.net",
-  "license": "GPL-3.0-or-later",
+  "homepage": "https://mamluk.net",
+  "license": "MIT",
   "config": {
     "sort-packages": true
   },
