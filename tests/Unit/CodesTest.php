@@ -1,6 +1,6 @@
 <?php
-use Meezaan\Microservice\Tests\Unit;
-use Meezaan\Microservice\Components\Http\Codes;
+use Mamluk\Kipchak\Tests\Unit;
+use Mamluk\Kipchak\Components\Http\Codes;
 
 class CodesTest extends \PHPUnit\Framework\TestCase
 {
