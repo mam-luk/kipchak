@@ -14,7 +14,7 @@
   "require": {
     "php": ">=8.1",
     "firebase/php-jwt": "^6.3",
-    "guzzlehttp/guzzle": "^7.0",
+    "illuminate/http": "^9.23",
     "monolog/monolog": "^3.2",
     "php-di/php-di": "^6.4",
     "phpfastcache/phpfastcache": "^9.1",
