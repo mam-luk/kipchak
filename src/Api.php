@@ -1,5 +1,5 @@
 <?php
-namespace Meezaan\Microservice;
+namespace Mamluk\Kipchak;
 
 use Slim\Factory\AppFactory;
 use Slim\App;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Meezaan\Microservice\Components\Exceptions\Handlers;
+namespace Mamluk\Kipchak\Components\Exceptions\Handlers;
 
 use Psr\Http\Message\ResponseInterface;
 use Slim\Exception\HttpBadRequestException;

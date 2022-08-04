@@ -1,6 +1,6 @@
 <?php
 
-namespace Meezaan\Microservice\Components\Controllers;
+namespace Mamluk\Kipchak\Components\Controllers;
 
 use Monolog\Logger;
 use Psr\Container\ContainerInterface;

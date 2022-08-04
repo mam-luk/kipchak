@@ -1,6 +1,6 @@
 <?php
 
-use Meezaan\Microservice\Components\Exceptions\Handlers\DefaultHandler;
+use Mamluk\Kipchak\Components\Exceptions\Handlers\DefaultHandler;
 
 $config = $container->get('config');
 $api = $config->get('api');

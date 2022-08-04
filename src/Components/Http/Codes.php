@@ -1,10 +1,10 @@
 <?php
 
-namespace Meezaan\Microservice\Components\Http;
+namespace Mamluk\Kipchak\Components\Http;
 
 /**
  * Class Codes
- * @package Meezaan\MicroServiceHelper\HttpCodes
+ * @package Mamluk\KipchakHelper\HttpCodes
  */
 
 class Codes

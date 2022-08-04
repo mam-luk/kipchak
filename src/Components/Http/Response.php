@@ -1,5 +1,5 @@
 <?php
-namespace Meezaan\Microservice\Components\Http;
+namespace Mamluk\Kipchak\Components\Http;
 
 use Psr\Http\Message\ResponseInterface;
 

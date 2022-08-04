@@ -1,5 +1,5 @@
 <?php
-namespace Meezaan\Microservice\Components\Helpers;
+namespace Mamluk\Kipchak\Components\Helpers;
 
 class Env
 {

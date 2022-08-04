@@ -1,9 +1,9 @@
 <?php
 
 
-namespace Meezaan\Microservice\Components\Middlewares;
+namespace Mamluk\Kipchak\Components\Middlewares;
 
-use Meezaan\Microservice\Components\Http;
+use Mamluk\Kipchak\Components\Http;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
