@@ -26,12 +26,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Meezaan\\Microservice\\": "src/"
+      "Mamluk\\Kipchak\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Meezaan\\Microservice\\Tests\\": "tests/"
+      "Mamluk\\Kipchak\\Tests\\": "tests/"
     }
   }
 }
