@@ -7,10 +7,8 @@ use Firebase\JWT\JWT;
 
 class JWKS
 {
-    public static function decode(string $jwt, string $jwksUri): \stdClass
+    public static function decode(string $jwt, array $jwks): \stdClass
     {
-        $jwks = json_decode(file_get_contents($jwksUri), true);
-
         return JWT::decode($jwt,
             JWK::parseKeySet($jwks)
         );

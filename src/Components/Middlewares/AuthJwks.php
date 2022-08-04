@@ -3,8 +3,6 @@
 
 namespace Mamluk\Kipchak\Components\Middlewares;
 
-use Firebase\JWT\JWK;
-use Firebase\JWT\JWT;
 use Mamluk\Kipchak\Components\Http;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -13,14 +11,23 @@ use RequestHandler;
 use ServerRequest;
 use Slim\Psr7\Response;
 use Mamluk\Kipchak\Helpers\JWKS;
+use Symfony\Contracts\Cache\ItemInterface;
+use Monolog\Logger;
+use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 class AuthJwks
 {
-    public $container;
+    public ContainerInterface $container;
+
+    private Logger $log;
+
+    private FilesystemAdapter $cache;
 
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
+        $this->cache = $container->get('cache_file');
+        $this->log = $container->get('logger');
 
     }
 
@@ -49,12 +56,21 @@ class AuthJwks
             } else {
                 try {
                     // Bearer token found
-
                     $jwt = $matches[1];
                     // The URI for the JWKS you wish to cache the results from
                     $jwksUri = $apiConfig['auth']['jwks']['jwksUri'];
 
-                    $token = JWKS::decode($jwt, $jwksUri);
+                    $this->log->debug('Using a cache contract to get the JWKS key...');
+
+                    $jwks = $this->cache->get('jwks', function (ItemInterface $item) use ($jwksUri) {
+                        $item->expiresAfter(86400);
+                        $this->log->debug('Cache miss. Getting JWKS key from the URL');
+                        $jwks = json_decode(file_get_contents($jwksUri), true);
+
+                        return $jwks;
+                    });
+
+                    $token = JWKS::decode($jwt, $jwks);
 
                     if (!JWKS::hasScopes($token->scopes, $apiConfig['auth']['jwks']['scopes'])) {
                         return Http\Response::json($response,
