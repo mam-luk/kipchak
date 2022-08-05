@@ -1,7 +1,7 @@
 <?php
 
 use Mamluk\Kipchak\Components\Exceptions\Handlers\DefaultHandler;
-use function Mamluk\Kipchak\Components\Helpers\config;
+use function Mamluk\Kipchak\config;
 
 $api = config('api');
 $debug = (bool) $api['debug'] == true;

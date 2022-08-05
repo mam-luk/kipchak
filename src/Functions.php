@@ -1,6 +1,6 @@
 <?php
 
-namespace Mamluk\Kipchak\Components\Helpers;
+namespace Mamluk\Kipchak;
 
 /**
  * @param string $file name of config file in the config folder of the Kipchak API

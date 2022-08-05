@@ -10,7 +10,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use RequestHandler;
 use ServerRequest;
 use Slim\Psr7\Response;
-use function Mamluk\Kipchak\Components\Helpers\config;
+use function Mamluk\Kipchak\config;
 
 class AuthKey
 {
