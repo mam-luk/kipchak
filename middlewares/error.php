@@ -1,9 +1,9 @@
 <?php
 
 use Mamluk\Kipchak\Components\Exceptions\Handlers\DefaultHandler;
+use function Mamluk\Kipchak\Components\Helpers\config;
 
-$config = $container->get('config');
-$api = $config->get('api');
+$api = config('api');
 $debug = (bool) $api['debug'] == true;
 
 // Add Application middleware

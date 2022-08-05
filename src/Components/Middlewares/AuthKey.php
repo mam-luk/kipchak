@@ -10,6 +10,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use RequestHandler;
 use ServerRequest;
 use Slim\Psr7\Response;
+use function Mamluk\Kipchak\Components\Helpers\config;
 
 class AuthKey
 {
@@ -31,8 +32,7 @@ class AuthKey
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): Response
     {
-        $config = $this->container->get('config');
-        $apiConfig = $config->get('api');
+        $apiConfig = config('api');
 
         if ($apiConfig['auth']['key']['enabled']) {
 

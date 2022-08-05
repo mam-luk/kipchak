@@ -14,6 +14,7 @@ use Mamluk\Kipchak\Helpers\JWKS;
 use Symfony\Contracts\Cache\ItemInterface;
 use Monolog\Logger;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
+use function Mamluk\Kipchak\Components\Helpers\config;
 
 class AuthJwks
 {
@@ -41,8 +42,7 @@ class AuthJwks
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): Response
     {
-        $config = $this->container->get('config');
-        $apiConfig = $config->get('api');
+        $apiConfig = config('api');
 
         if ($apiConfig['auth']['jwks']['enabled'] && isset($request->getHeader('Authorization')[0])) {
             $response = new Response();

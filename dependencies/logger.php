@@ -4,10 +4,11 @@ Use Monolog\Logger;
 use Monolog\Level;
 Use Monolog\Handler\StreamHandler;
 use Psr\Container\ContainerInterface;
+use function Mamluk\Kipchak\Components\Helpers\config;
 
 $container->set('logger', function(ContainerInterface $c) {
-$config = $c->get('config');
-$apiConfig = $config->get('api');
+
+$apiConfig = config('api');
 if (
     isset($apiConfig['loglevel']) &&
     in_array(
