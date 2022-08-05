@@ -3,7 +3,6 @@
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Symfony\Component\Cache\Adapter\MemcachedAdapter;
-use Memcached;
 
 $container->set('cache_file', function(ContainerInterface $c) {
     $config = $c->get('config')['api'];
@@ -26,5 +25,5 @@ $container->set('cache_memcached', function(ContainerInterface $c) {
     $memcached->setOption(Memcached::OPT_RETRY_TIMEOUT, 1);
     $memcached->addServers($servers);
 
-    return $memcached;
+    return new MemcachedAdapter($memcached);
 });
