@@ -4,7 +4,6 @@ Use Monolog\Logger;
 use Monolog\Level;
 Use Monolog\Handler\StreamHandler;
 use Psr\Container\ContainerInterface;
-use function Mamluk\Kipchak\config;
 
 $container->set('logger', function(ContainerInterface $c) {
 

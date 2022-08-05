@@ -1,7 +1,6 @@
 <?php
 
 use Psr\Container\ContainerInterface;
-use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use function Mamluk\Kipchak\config;
 
 $container->set('config', function(ContainerInterface $c) {
