@@ -8,7 +8,7 @@ $container->set('cache_file', function(ContainerInterface $c) {
     $config = $c->get('config')['api'];
     $namespace = $config['name'] ?? 'apiCache';
 
-    return new FilesystemAdapter($namespace);
+    return new FilesystemAdapter($namespace, 3600);
 });
 
 $container->set('cache_memcached', function(ContainerInterface $c) {
@@ -25,5 +25,5 @@ $container->set('cache_memcached', function(ContainerInterface $c) {
     $memcached->setOption(Memcached::OPT_RETRY_TIMEOUT, 1);
     $memcached->addServers($servers);
 
-    return new MemcachedAdapter($memcached);
+    return new MemcachedAdapter($memcached, $namespace, 3600);
 });
