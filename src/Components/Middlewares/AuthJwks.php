@@ -48,7 +48,7 @@ class AuthJwks
                 // No Bearer token found.
                 return Http\Response::json($response,
                     'No Bearer token found in the Authorization header',
-                    403
+                    401
                 );
             } else {
                 try {
@@ -72,7 +72,7 @@ class AuthJwks
                     if (!JWKS::hasScopes($token->scope, $apiConfig['auth']['jwks']['scopes'])) {
                         return Http\Response::json($response,
                             'Missing required scope(s)',
-                            403
+                            401
                         );
                     }
 
@@ -83,7 +83,7 @@ class AuthJwks
                 } catch (\Exception $e) {
                     return Http\Response::json($response,
                         'Unable to decode token. ' . $e->getMessage(),
-                        403
+                        401
                     );
                 }
             }

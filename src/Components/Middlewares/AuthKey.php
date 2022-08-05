@@ -40,7 +40,7 @@ class AuthKey
             if (!in_array($key, $apiConfig['auth']['key']['authorised_keys'])) {
                 return Http\Response::json($response,
                     'Missing or invalid key',
-                    403
+                    401
                 );
             }
 
