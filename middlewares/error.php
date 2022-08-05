@@ -3,7 +3,8 @@
 use Mamluk\Kipchak\Components\Exceptions\Handlers\DefaultHandler;
 use function Mamluk\Kipchak\config;
 
-$api = config('api');
+$container = $app->getContainer();
+$api = $container->get('config')['api'];
 $debug = (bool) $api['debug'] == true;
 
 // Add Application middleware

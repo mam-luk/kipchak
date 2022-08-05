@@ -32,7 +32,7 @@ class AuthKey
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): Response
     {
-        $apiConfig = config('api');
+        $apiConfig = $this->container->get('config')['api'];
 
         if ($apiConfig['auth']['key']['enabled']) {
 

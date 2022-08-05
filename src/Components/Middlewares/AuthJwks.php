@@ -42,7 +42,7 @@ class AuthJwks
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): Response
     {
-        $apiConfig = config('api');
+        $apiConfig = $this->container->get('config')['api'];
 
         if ($apiConfig['auth']['jwks']['enabled'] && isset($request->getHeader('Authorization')[0])) {
             $response = new Response();

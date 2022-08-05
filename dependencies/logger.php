@@ -8,7 +8,7 @@ use function Mamluk\Kipchak\config;
 
 $container->set('logger', function(ContainerInterface $c) {
 
-$apiConfig = config('api');
+$apiConfig = $c->get('config')['api'];
 if (
     isset($apiConfig['loglevel']) &&
     in_array(
