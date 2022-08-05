@@ -12,7 +12,6 @@ use Mamluk\Kipchak\Components\Helpers\JWKS;
 use Symfony\Contracts\Cache\ItemInterface;
 use Monolog\Logger;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
-use function Mamluk\Kipchak\config;
 
 class AuthJwks
 {
