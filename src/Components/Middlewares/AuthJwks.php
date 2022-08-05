@@ -7,14 +7,12 @@ use Mamluk\Kipchak\Components\Http;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use RequestHandler;
-use ServerRequest;
 use Slim\Psr7\Response;
-use Mamluk\Kipchak\Helpers\JWKS;
+use Mamluk\Kipchak\Components\Helpers\JWKS;
 use Symfony\Contracts\Cache\ItemInterface;
 use Monolog\Logger;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
-
+use function Mamluk\Kipchak\config;
 
 class AuthJwks
 {
@@ -72,7 +70,7 @@ class AuthJwks
 
                     $token = JWKS::decode($jwt, $jwks);
 
-                    if (!JWKS::hasScopes($token->scopes, $apiConfig['auth']['jwks']['scopes'])) {
+                    if (!JWKS::hasScopes($token->scope, $apiConfig['auth']['jwks']['scopes'])) {
                         return Http\Response::json($response,
                             'Missing required scope(s)',
                             403

@@ -7,8 +7,6 @@ use Mamluk\Kipchak\Components\Http;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use RequestHandler;
-use ServerRequest;
 use Slim\Psr7\Response;
 
 class AuthKey
