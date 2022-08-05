@@ -8,7 +8,7 @@ namespace Mamluk\Kipchak;
  */
 function config(string $file): array
 {
-    $configDir = realpath(__DIR__ . '/../../../../../config');
+    $configDir = realpath(__DIR__ . '/../../../../config/');
     $configFile = $configDir . '/' . $file . '.php';
     if (file_exists($configFile)) {
         $config = include_once($configFile);

@@ -6,8 +6,7 @@ use function Mamluk\Kipchak\config;
 
 $container->set('cache_file', function(ContainerInterface $c) {
     $config = config('api');
-    $namespace = isset($config->get('api')['name']) ? $config->get('api')['name'] : 'apiCache';
-    $cache = new FilesystemAdapter($namespace);
+    $namespace = $config['name'] ?? 'apiCache';
 
-    return $cache;
+    return new FilesystemAdapter($namespace);
 });
