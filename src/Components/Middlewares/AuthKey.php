@@ -34,7 +34,6 @@ class AuthKey
     {
         $apiConfig = $this->container->get('config')['api'];
 
-        if ($apiConfig['auth']['key']['enabled']) {
 
             $response = new Response();
             $key = isset($request->getHeader('x-api-key')[0]) ?
@@ -51,11 +50,5 @@ class AuthKey
             // If we got this far, we can let the token through
             $response = $handler->handle($request);
             return $response;
-
-        } else {
-            // No Key required.
-            $response = $handler->handle($request);
-            return $response;
-        }
     }
 }

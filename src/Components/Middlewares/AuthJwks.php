@@ -44,7 +44,7 @@ class AuthJwks
     {
         $apiConfig = $this->container->get('config')['api'];
 
-        if ($apiConfig['auth']['jwks']['enabled'] && isset($request->getHeader('Authorization')[0])) {
+        if (isset($request->getHeader('Authorization')[0])) {
             $response = new Response();
             $authHeader = $request->getHeader('Authorization')[0];
             if (!preg_match('/Bearer\s(\S+)/', $authHeader, $matches)) {
