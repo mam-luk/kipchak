@@ -14,8 +14,8 @@ $container->set('config', function(ContainerInterface $c) {
     $config = [];
     foreach ($routes as $route) {
         if (strpos($route, '.php') !== false) {
-            $name = str_replace('.php', '', $route);
-            $config['name'] = config($name);
+            $name = basename(str_replace('.php', '', $route));
+            $config[$name] = config($name);
         }
     }
     return $config;
