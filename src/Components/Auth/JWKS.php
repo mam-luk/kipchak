@@ -1,6 +1,6 @@
 <?php
 
-namespace Mamluk\Kipchak\Components\Helpers;
+namespace Mamluk\Kipchak\Components\Auth;
 
 use Firebase\JWT\JWK;
 use Firebase\JWT\JWT;

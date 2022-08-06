@@ -1,10 +1,10 @@
 <?php
 
-namespace Mamluk\Kipchak\Components\Helpers;
+namespace Mamluk\Kipchak\Components\Session\Handlers;
 
 use Illuminate\Http\Client\Factory;
 
-class CouchDBSessionHandler implements \SessionHandlerInterface
+class CouchDB implements \SessionHandlerInterface
 {
     private string $user;
     private string $password;
@@ -13,7 +13,6 @@ class CouchDBSessionHandler implements \SessionHandlerInterface
     private string $apiDB;
     private $data;
     private $maxlifetime;
-
     private Factory $client;
 
     public function __construct(string $maxlifetime, string $user, string $password, string $apiDB, string $host, int $port = 5984)
