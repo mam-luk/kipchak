@@ -43,7 +43,7 @@ class CouchDB implements \SessionHandlerInterface
                     'language' => 'javascript',
                     'views' => [
                         'gc' => [
-                            'map' => 'function(doc) { emit(doc.expiry, doc_rev); }'
+                            'map' => 'function(doc) { emit(doc.expiry, doc._rev); }'
                         ]
                     ]
                 ]);
