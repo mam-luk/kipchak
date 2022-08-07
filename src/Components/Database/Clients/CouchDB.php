@@ -24,13 +24,15 @@ class CouchDB
         $this->url = "$host:$port/$database";
         $this->user = $user;
         $this->password = $password;
+
+        $this->createDatabase();
     }
 
     /**
      * Creates the database if it does not exist
      * @return bool
      */
-    public function createDatabase(): bool
+    protected function createDatabase(): bool
     {
         $existingDB = $this->http->withBasicAuth($this->user, $this->password)
             ->get($this->url);
@@ -49,7 +51,7 @@ class CouchDB
      * @param string $document JSON encoded string
      * @return void
      */
-    public function createDocument(string $id, string $document)
+    public function create(string $id, string $document)
     {
         $r = $this->http->withBasicAuth($this->user, $this->password)
             ->withBody($document, 'application/json')
@@ -59,20 +61,29 @@ class CouchDB
     }
 
     /**
-     * @param string $name Name of the design document without the _design/ prefix
-     * @param string $document
-     * @return bool
+     * @param string $id
+     * @param string $document JSON encoded string
+     * @return void
      */
-    public function createDesignDocument(string $name, string $document)
+    public function update(string $id, string $document, string $revision = null)
     {
+        if ($revision === null) {
+            $r = $this->http->withBasicAuth($this->user, $this->password)
+                ->get($this->url . '/' . $id);
+            if ($r->ok()) {
+                $revision = $r->json()['_rev'];
+            }
+        }
+
         $r = $this->http->withBasicAuth($this->user, $this->password)
             ->withBody($document, 'application/json')
-            ->put($this->url . '/_design/' .$name );
+            ->put($this->url . '/' . $id . '?rev=' . $revision);
 
         return $r->status() === 201;
     }
 
-    public function getDocument(string $id): array
+
+    public function read(string $id): array
     {
         $r = $this->http->withBasicAuth($this->user, $this->password)
             ->get($this->url . '/' . $id);
@@ -88,7 +99,7 @@ class CouchDB
      * @param string|null $revision _rev from the document. If not provided, the document will be queried to get this value
      * @return bool
      */
-    public function deleteDocument(string $id, string $revision = null): bool
+    public function delete(string $id, string $revision = null): bool
     {
         if ($revision === null) {
             $r = $this->http->withBasicAuth($this->user, $this->password)
@@ -99,7 +110,7 @@ class CouchDB
         }
 
         $r = $this->http->withBasicAuth($this->user, $this->password)
-            ->delete($this->url . '?rev=' . $revision);
+            ->delete($this->url . '/' . $id . '?rev=' . $revision);
 
         return $r->ok();
     }
