@@ -69,11 +69,13 @@ class AuthJwks
 
                     $token = JWKS::decode($jwt, $jwks);
 
-                    if (!JWKS::hasScopes($token->scope, $apiConfig['auth']['jwks']['scopes'])) {
-                        return Http\Response::json($response,
-                            'Missing required scope(s)',
-                            401
-                        );
+                    if ($apiConfig['auth']['jwks']['validate_scopes']) {
+                        if (!JWKS::hasScopes($token->scope, $apiConfig['auth']['jwks']['scopes'])) {
+                            return Http\Response::json($response,
+                                'Missing required scope(s)',
+                                401
+                            );
+                        }
                     }
 
                     // Add the token to the container so the route can access it if needed
