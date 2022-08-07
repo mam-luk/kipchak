@@ -30,6 +30,8 @@ class Api
         $container = $app->getContainer();
         // Load static functions
         require_once(realpath(__DIR__ . '/Functions.php'));
+        require_once(realpath(__DIR__ . '/../dependencies/config.php'));
+        require_once(realpath(__DIR__ . '/../dependencies/logger.php'));
         /** Load all the dependency files in the /routes folder of this project **/
         $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(realpath(__DIR__ . '/../dependencies')));
         $dependencies = array_keys(array_filter(iterator_to_array($iterator), function($file) {

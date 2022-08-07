@@ -6,7 +6,7 @@ use Symfony\Component\Cache\Adapter\MemcachedAdapter;
 
 $container->set('cache_file', function(ContainerInterface $c) {
     $config = $c->get('config')['api'];
-    $namespace = $config['name'] ?? 'apiCache';
+    $namespace = $config['name'] ?? 'KipchakApiCache';
 
     return new FilesystemAdapter($namespace, 3600);
 });

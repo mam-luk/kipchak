@@ -10,7 +10,7 @@ class CouchDB
     private string $url;
 
     /**
-     * @var Factory 
+     * @var Factory
      */
     private Factory $http;
 
