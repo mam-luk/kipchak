@@ -76,6 +76,11 @@ class AuthJwks
                         );
                     }
 
+                    // Add the token to the container so the route can access it if needed
+                    $this->container->set('token', function(ContainerInterface $c) use ($token) {
+                        return $token;
+                    });
+
                     // If we got this far, we can let the token through
                     $response = $handler->handle($request);
                     return $response;
