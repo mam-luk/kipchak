@@ -39,7 +39,7 @@ class AuthJwks
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): Response
     {
-        $apiConfig = $this->container->get('config')['api'];
+        $authConfig = $this->container->get('config')['kipchak_auth'];
 
         if (isset($request->getHeader('Authorization')[0])) {
             $response = new Response();
@@ -55,7 +55,7 @@ class AuthJwks
                     // Bearer token found
                     $jwt = $matches[1];
                     // The URI for the JWKS you wish to cache the results from
-                    $jwksUri = $apiConfig['auth']['jwks']['jwksUri'];
+                    $jwksUri = $authConfig['jwks']['jwksUri'];
 
                     $this->log->debug('Using a cache contract to get the JWKS key...');
 
@@ -69,8 +69,8 @@ class AuthJwks
 
                     $token = JWKS::decode($jwt, $jwks);
 
-                    if ($apiConfig['auth']['jwks']['validate_scopes']) {
-                        if (!JWKS::hasScopes($token->scope, $apiConfig['auth']['jwks']['scopes'])) {
+                    if ($authConfig['jwks']['validate_scopes']) {
+                        if (!JWKS::hasScopes($token->scope, $authConfig['jwks']['scopes'])) {
                             return Http\Response::json($response,
                                 'Missing required scope(s)',
                                 401

@@ -29,7 +29,7 @@ class AuthKey
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): Response
     {
-        $apiConfig = $this->container->get('config')['api'];
+        $authConfig = $this->container->get('config')['kipchak_auth'];
 
 
             $response = new Response();
@@ -37,15 +37,17 @@ class AuthKey
                 $request->getHeader('x-api-key')[0] :
                 Http\Request::getQueryParam($request, 'key');
 
-            if (!in_array($key, $apiConfig['auth']['key']['authorised_keys'])) {
-                return Http\Response::json($response,
-                    'Missing or invalid key',
-                    401
-                );
+            if (isset($authConfig['authorised_keys'][$key])) {
+                // Key matched!
+                $response = $handler->handle($request);
+
+                return $response;
             }
 
-            // If we got this far, we can let the token through
-            $response = $handler->handle($request);
-            return $response;
+        return Http\Response::json($response,
+            'Missing or invalid key',
+            401
+        );
+
     }
 }

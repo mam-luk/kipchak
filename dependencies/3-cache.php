@@ -11,7 +11,7 @@ $container->set('cache_file', function(ContainerInterface $c) {
     return new FilesystemAdapter($namespace, 3600);
 });
 
-$memcachedConfig = $container->get('config')['memcached'];
+$memcachedConfig = $container->get('config')['kipchak_memcached'];
 
 if ($memcachedConfig['enabled']) {
     $container->set('cache_memcached', function (ContainerInterface $c) {

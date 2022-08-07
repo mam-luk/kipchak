@@ -4,18 +4,57 @@ namespace Mamluk\Kipchak\Components\Session\Handlers;
 
 use Illuminate\Http\Client\Factory;
 
+/**
+ * PHP SessionHandler for CouchDB
+ */
 class CouchDB implements \SessionHandlerInterface
 {
+    /**
+     * @var string CouchDB user
+     */
     private string $user;
+
+    /**
+     * @var string CouchDB password
+     */
     private string $password;
+
+    /**
+     * @var string CouchDB host FQDN, with http:// or https://
+     */
     private string $host;
+
+    /**
+     * @var int CouchDB Port
+     */
     private int $port;
+
+    /**
+     * @var string Name of CouchDB Database to write sessions to
+     */
     private string $apiDB;
+
+    /**
+     * @var array|null The object stored in CouchDB
+     */
     private $data;
-    private $maxlifetime;
+
+    /**
+     * @var string A PHP time string. Example: '1 hour' or '2 days'
+     */
+    private string $maxlifetime;
+
+    /**
+     * @var Factory The Illuminate HTTP Client Factory
+     */
     private Factory $client;
 
-    public function __construct(string $maxlifetime, string $user, string $password, string $apiDB, string $host, int $port = 5984)
+    /**
+     * @var string The couch DB URL to make code less verbose
+     */
+    private string $url;
+
+    public function __construct(string $maxlifetime, string $user, string $password, string $apiDB, string $host, int $port = 5984, Factory $httpClient = new Factory())
     {
         $this->user = $user;
         $this->password = $password;
@@ -23,18 +62,19 @@ class CouchDB implements \SessionHandlerInterface
         $this->port = $port;
         $this->apiDB = $apiDB;
         $this->data = null;
-        $this->client = new Factory();
+        $this->client = new $httpClient;
         $this->maxlifetime = $maxlifetime;
+        $this->url = $this->host . ':' . $this->port . '/' . $this->apiDB;
 
         // Check if DB exists
         $existingDB = $this->client->withBasicAuth($this->user, $this->password)
-            ->get($this->host . ':' . $this->port . '/' . $this->apiDB);
+            ->get($this->url);
 
         // If it does not exist, create the DB and design doc
         if (!$existingDB->ok()) {
 
             $dbCreated = $this->client->withBasicAuth($this->user, $this->password)
-                ->put($this->host . ':' . $this->port . '/' . $this->apiDB);
+                ->put($this->url);
 
             if ($dbCreated->status() == 201) {
                 // See README. Please create the couchdb database before hand and we don't want to try creating the database each time this class is loaded.
@@ -51,7 +91,7 @@ class CouchDB implements \SessionHandlerInterface
                 // Create Design Document
                 $this->client->withBasicAuth($this->user, $this->password)
                     ->withBody($designdoc, 'application/json')
-                    ->put($this->host . ':' . $this->port . '/' . $this->apiDB . '/_design/sessions');
+                    ->put($this->url . '/_design/sessions');
             }
         }
     }
@@ -69,7 +109,7 @@ class CouchDB implements \SessionHandlerInterface
     public function read(string $id): string
     {
         $result = $this->client->withBasicAuth($this->user, $this->password)
-            ->get($this->host . ':' . $this->port . '/' . $this->apiDB . '/' . $id);
+            ->get($this->url . '/' . $id);
 
        if ($result->status() == 200) {
            $this->data = $result->json();
@@ -98,7 +138,7 @@ class CouchDB implements \SessionHandlerInterface
 
         $result = $this->client->withBasicAuth($this->user, $this->password)
             ->withBody(json_encode($body), 'application/json')
-            ->put($this->host . ':' . $this->port . '/' . $this->apiDB . '/' . $id);
+            ->put($this->url . '/' . $id);
 
         return in_array($result->status(), [200, 201]);
     }
@@ -106,10 +146,10 @@ class CouchDB implements \SessionHandlerInterface
     public function destroy($id): bool
     {
         $result = $this->client->withBasicAuth($this->user, $this->password)
-            ->get($this->host . ':' . $this->port . '/' . $this->apiDB . '/' . $id);
+            ->get($this->url . '/' . $id);
 
         $this->client->withBasicAuth($this->user, $this->password)
-            ->delete($this->host . ':' . $this->port . '/' . $this->apiDB . '/' . $id . '?rev=' . $result->json()['_rev']);
+            ->delete($this->url . '/' . $id . '?rev=' . $result->json()['_rev']);
 
         return true;
     }
@@ -121,7 +161,7 @@ class CouchDB implements \SessionHandlerInterface
         $query =  "_design/sessions/_view/gc?endkey=$time";
 
         $expired = $this->client->withBasicAuth($this->user, $this->password)
-            ->get($this->host . ':' . $this->port . '/' . $this->apiDB . '/' . $query)
+            ->get($this->url . '/' . $query)
             ->json();
 
         foreach ($expired['rows'] as $session) {
