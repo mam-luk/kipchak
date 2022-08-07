@@ -6,18 +6,51 @@ use Illuminate\Http\Client\Factory;
 
 class CouchDB
 {
-    private $url;
-    private $http;
+
+    private string $url;
+
+    /**
+     * @var Factory 
+     */
+    private Factory $http;
+
+    /**
+     * @var string Database name to connect to
+     */
     private $database;
-    private $user;
-    private $password;
-    private $host;
-    private $port;
+
+    /**
+     * @var string CouchDB username
+     */
+    private string $user;
+
+    /**
+     * @var string CouchDB Password
+     */
+    private string $password;
+
+    /**
+     * @var string CouchDB host with http:// or https:// and no trailing slash!
+     */
+    private string $host;
+
+    /**
+     * @var int
+     */
+    private int $port;
 
 
-    public function __construct(string $user, string $password, string $database, string $host, int $port = 5984)
+    /**
+     * @param string $user
+     * @param string $password
+     * @param string $database
+     * @param string $host
+     * @param int $port
+     * @param Factory $httpClient
+     */
+    public function __construct(string $user, string $password, string $database, string $host, int $port = 5984, Factory $httpClient = new Factory())
     {
-        $this->http = new Factory();
+        $this->http = $httpClient;
         $this->database = $database;
         $this->host = $host;
         $this->port = $port;
