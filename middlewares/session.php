@@ -20,6 +20,11 @@ if ($csess['enabled']) {
                             'session.gc_probability' => 1,
                             'session.gc_maxlifetime' => 30 * 24 * 60 * 60,
                         ],
+                    'path' => $csess['cookie_options']['path'],
+                    'domain' => $csess['cookie_options']['domain'],
+                    'secure' => $csess['cookie_options']['secure'],
+                    'httponly' => $csess['cookie_options']['httponly'],
+                    'samesite' => $csess['cookie_options']['samesite'],
                     'handler' =>
                         new CouchDB(
                             $csess['lifetime'],
