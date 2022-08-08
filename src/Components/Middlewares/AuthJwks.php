@@ -24,7 +24,7 @@ class AuthJwks
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
-        $this->cache = $container->get('cache_file');
+        $this->cache = $container->get('cache.file');
         $this->log = $container->get('logger');
 
     }
