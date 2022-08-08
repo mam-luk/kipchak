@@ -3,6 +3,6 @@
 use Psr\Container\ContainerInterface;
 use Illuminate\Http\Client\Factory;
 
-$container->set('client_http', function(ContainerInterface $c) {
+$container->set('http.client', function(ContainerInterface $c) {
     return new Factory();
 });

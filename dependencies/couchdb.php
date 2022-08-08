@@ -7,7 +7,7 @@ if (isset($container->get('config')['couchdb']['connections']) && $container->ge
     $connections = $container->get('config')['couchdb']['connections'];
     $logger = $container->get('logger');
     foreach($connections as $connectionName => $connectionDetails) {
-        $container->set('database_couchdb_' . $connectionName , function (ContainerInterface $c) use ($connectionDetails, $logger) {
+        $container->set('database.couchdb.' . $connectionName , function (ContainerInterface $c) use ($connectionDetails, $logger) {
             return new CouchDB($connectionDetails['username'], $connectionDetails['password'],
                 $connectionDetails['database'], $connectionDetails['host'], $connectionDetails['port'], $logger);
         });
