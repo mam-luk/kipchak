@@ -11,23 +11,24 @@ $container->set('cache_file', function(ContainerInterface $c) {
     return new FilesystemAdapter($namespace, 3600);
 });
 
-$memcachedConfig = $container->get('config')['kipchak_memcached'];
+if (isset($container->get('config')['kipchak_memcached'])) {
+    $memcachedConfig = $container->get('config')['kipchak_memcached'];
 
-if ($memcachedConfig['enabled']) {
-    $container->set('cache_memcached', function (ContainerInterface $c) {
-        $configApi = $c->get('config')['kipchak_api'];
-        $namespace = $configApi['name'] ?? 'apiCache';
+    if ($memcachedConfig['enabled'] && isset($memcachedConfig['pools'])) {
+        foreach ($memcachedConfig['pools'] as $poolName => $poolConnection) {
+            $container->set('cache_memcached_' . $poolName, function (ContainerInterface $c) use ($memcachedConfig, $poolConnection) {
+                $namespace = isset($c->get('config')['kipchak_api']['name']) ?? 'apiCache';
 
-        $servers = $c->get('config')['memcached']['servers'];
+                $memcached = new Memcached($namespace);
+                $memcached->setOption(Memcached::OPT_CONNECT_TIMEOUT, 10);
+                $memcached->setOption(Memcached::OPT_DISTRIBUTION, Memcached::DISTRIBUTION_CONSISTENT);
+                $memcached->setOption(Memcached::OPT_SERVER_FAILURE_LIMIT, 2);
+                $memcached->setOption(Memcached::OPT_REMOVE_FAILED_SERVERS, true);
+                $memcached->setOption(Memcached::OPT_RETRY_TIMEOUT, 1);
+                $memcached->addServers($poolConnection);
 
-        $memcached = new Memcached($namespace);
-        $memcached->setOption(Memcached::OPT_CONNECT_TIMEOUT, 10);
-        $memcached->setOption(Memcached::OPT_DISTRIBUTION, Memcached::DISTRIBUTION_CONSISTENT);
-        $memcached->setOption(Memcached::OPT_SERVER_FAILURE_LIMIT, 2);
-        $memcached->setOption(Memcached::OPT_REMOVE_FAILED_SERVERS, true);
-        $memcached->setOption(Memcached::OPT_RETRY_TIMEOUT, 1);
-        $memcached->addServers($servers);
-
-        return new MemcachedAdapter($memcached, $namespace, 3600);
-    });
+                return new MemcachedAdapter($memcached, $namespace, 3600);
+            });
+        }
+    }
 }

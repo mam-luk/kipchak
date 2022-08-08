@@ -59,6 +59,12 @@ class CouchDB
         $this->password = $password;
     }
 
+    public function setDatabase(string $database): void
+    {
+        $this->database = $database;
+        $this->url = $this->host . ':' . $this->port . '/$database';
+    }
+
     /**
      * Creates the database if it does not exist
      * @return bool

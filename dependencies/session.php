@@ -2,11 +2,12 @@
 
 use SlimSession\Helper;
 
-$csess = $container->get('config')['kipchak_sessions'];
+if (isset($container->get('config')['kipchak_sessions'])) {
+    $csess = $container->get('config')['kipchak_sessions'];
 
-if ($csess['enabled']) {
-    $container->set('session', function () {
-        return new Helper();
-    });
+    if ($csess['enabled']) {
+        $container->set('session', function () {
+            return new Helper();
+        });
+    }
 }
-
