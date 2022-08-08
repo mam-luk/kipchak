@@ -96,8 +96,10 @@ class AuthJwks
             }
         } else {
             // No Authorization header or JWT auth is disabled in config, so do nothing.
-            $response = $handler->handle($request);
-            return $response;
+            return Http\Response::json($response,
+                'No token found',
+                401
+            );
         }
     }
 
