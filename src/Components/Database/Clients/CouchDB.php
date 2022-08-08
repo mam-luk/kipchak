@@ -3,6 +3,7 @@
 namespace Mamluk\Kipchak\Components\Database\Clients;
 
 use Illuminate\Http\Client\Factory;
+use Monolog\Logger;
 
 class CouchDB
 {
@@ -39,6 +40,8 @@ class CouchDB
      */
     private int $port;
 
+    public Logger $log;
+
 
     /**
      * @param string $user
@@ -48,7 +51,9 @@ class CouchDB
      * @param int $port
      * @param Factory $httpClient
      */
-    public function __construct(string $user, string $password, string $database, string $host, int $port = 5984, Factory $httpClient = new Factory())
+    public function __construct(string $user, string $password, string $database,
+                                string $host, int $port = 5984,
+                                Factory $httpClient = new Factory(), Logger $log)
     {
         $this->http = $httpClient;
         $this->database = $database;
@@ -57,6 +62,7 @@ class CouchDB
         $this->url = "$host:$port/$database";
         $this->user = $user;
         $this->password = $password;
+        $this->log = $log;
     }
 
     public function setDatabase(string $database): void
