@@ -3,12 +3,12 @@
 use Slim\Middleware\Session;
 use Mamluk\Kipchak\Components\Session\Handlers\CouchDB;
 
-if (isset($container->get('config')['kipchak_sessions'])) {
-    $csess = $container->get('config')['kipchak_sessions'];
+if (isset($container->get('config')['kipchak.sessions'])) {
+    $csess = $container->get('config')['kipchak.sessions'];
 
     if ($csess['enabled']) {
         if ($csess['store'] == 'couchdb') {
-            $couchConfig = $container->get('config')['kipchak_couchdb']['connections'][$csess['store_config']['couchdb']['connection']];
+            $couchConfig = $container->get('config')['kipchak.couchdb']['connections'][$csess['store_config']['couchdb']['connection']];
 
             $app->add(
                 new Session(
@@ -41,7 +41,7 @@ if (isset($container->get('config')['kipchak_sessions'])) {
             );
         } elseif ($csess['store'] == 'memcached') {
             $servers = [];
-            $memachedPool = $container->get('config')['kipchak_memcached']['pools'][$csess['store_config']['memcached']['pool']];
+            $memachedPool = $container->get('config')['kipchak.memcached']['pools'][$csess['store_config']['memcached']['pool']];
             foreach ($memachedPool as $server) {
                 $servers[] = $server['host'] . ':' . $server['port'];
             }

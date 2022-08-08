@@ -7,8 +7,8 @@ use Psr\Container\ContainerInterface;
 
 $container->set('logger', function(ContainerInterface $c) {
 
-    if (isset($c->get('config')['kipchak_api'])) {
-        $apiConfig = $c->get('config')['kipchak_api'];
+    if (isset($c->get('config')['kipchak.api'])) {
+        $apiConfig = $c->get('config')['kipchak.api'];
         if (
             isset($apiConfig['loglevel']) &&
             in_array(

@@ -39,7 +39,7 @@ class AuthJwks
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): Response
     {
-        $authConfig = $this->container->get('config')['kipchak_auth'];
+        $authConfig = $this->container->get('config')['kipchak.auth'];
         $response = new Response();
 
         if (isset($request->getHeader('Authorization')[0])) {
@@ -85,7 +85,7 @@ class AuthJwks
 
                     // If we got this far, we can let the token through
                     $response = $handler->handle($request);
-                    
+
                     return $response;
 
                 } catch (\Exception $e) {

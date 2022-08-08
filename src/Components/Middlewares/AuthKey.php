@@ -29,7 +29,7 @@ class AuthKey
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): Response
     {
-        $authConfig = $this->container->get('config')['kipchak_auth'];
+        $authConfig = $this->container->get('config')['kipchak.auth'];
 
 
             $response = new Response();

@@ -5,19 +5,19 @@ use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Symfony\Component\Cache\Adapter\MemcachedAdapter;
 
 $container->set('cache_file', function(ContainerInterface $c) {
-    $config = $c->get('config')['kipchak_api'];
+    $config = $c->get('config')['kipchak.api'];
     $namespace = $config['name'] ?? 'KipchakApiCache';
 
     return new FilesystemAdapter($namespace, 3600);
 });
 
-if (isset($container->get('config')['kipchak_memcached'])) {
-    $memcachedConfig = $container->get('config')['kipchak_memcached'];
+if (isset($container->get('config')['kipchak.memcached'])) {
+    $memcachedConfig = $container->get('config')['kipchak.memcached'];
 
     if ($memcachedConfig['enabled'] && isset($memcachedConfig['pools'])) {
         foreach ($memcachedConfig['pools'] as $poolName => $poolConnection) {
             $container->set('cache_memcached_' . $poolName, function (ContainerInterface $c) use ($memcachedConfig, $poolConnection) {
-                $namespace = isset($c->get('config')['kipchak_api']['name']) ?? 'apiCache';
+                $namespace = isset($c->get('config')['kipchak.api']['name']) ?? 'apiCache';
 
                 $memcached = new Memcached($namespace);
                 $memcached->setOption(Memcached::OPT_CONNECT_TIMEOUT, 10);

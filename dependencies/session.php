@@ -2,8 +2,8 @@
 
 use SlimSession\Helper;
 
-if (isset($container->get('config')['kipchak_sessions'])) {
-    $csess = $container->get('config')['kipchak_sessions'];
+if (isset($container->get('config')['kipchak.sessions'])) {
+    $csess = $container->get('config')['kipchak.sessions'];
 
     if ($csess['enabled']) {
         $container->set('session', function () {
