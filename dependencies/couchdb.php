@@ -10,7 +10,8 @@ if (isset($container->get('config')['kipchak.couchdb']['connections']) && $conta
     foreach($connections as $connectionName => $connectionDetails) {
         $container->set('database.couchdb.' . $connectionName , function (ContainerInterface $c) use ($connectionDetails, $httpClient, $logger) {
             return new CouchDB($connectionDetails['username'], $connectionDetails['password'],
-                $connectionDetails['database'], $connectionDetails['host'], $connectionDetails['port'], $httpClient, $logger);
+                $connectionDetails['database'], $connectionDetails['host'], $logger,
+                $httpClient, $connectionDetails['port']);
         });
     }
 

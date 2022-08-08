@@ -52,8 +52,8 @@ class CouchDB
      * @param Factory $httpClient
      */
     public function __construct(string $user, string $password, string $database,
-                                string $host, int $port = 5984,
-                                Factory $httpClient = new Factory(), Logger $log)
+                                string $host, Logger $log, Factory $httpClient = new Factory(), int $port = 5984,
+                                )
     {
         $this->http = $httpClient;
         $this->database = $database;
