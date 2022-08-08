@@ -5,7 +5,7 @@ use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Symfony\Component\Cache\Adapter\MemcachedAdapter;
 
 $container->set('cache_file', function(ContainerInterface $c) {
-    $config = $c->get('config')['api'];
+    $config = $c->get('config')['kipchak_api'];
     $namespace = $config['name'] ?? 'KipchakApiCache';
 
     return new FilesystemAdapter($namespace, 3600);
@@ -15,7 +15,7 @@ $memcachedConfig = $container->get('config')['kipchak_memcached'];
 
 if ($memcachedConfig['enabled']) {
     $container->set('cache_memcached', function (ContainerInterface $c) {
-        $configApi = $c->get('config')['api'];
+        $configApi = $c->get('config')['kipchak_api'];
         $namespace = $configApi['name'] ?? 'apiCache';
 
         $servers = $c->get('config')['memcached']['servers'];

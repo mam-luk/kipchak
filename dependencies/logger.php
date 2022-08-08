@@ -7,7 +7,7 @@ use Psr\Container\ContainerInterface;
 
 $container->set('logger', function(ContainerInterface $c) {
 
-$apiConfig = $c->get('config')['api'];
+$apiConfig = $c->get('config')['kipchak_api'];
 if (
     isset($apiConfig['loglevel']) &&
     in_array(
@@ -26,7 +26,7 @@ if (
     $logLevel = $apiConfig['debug'] === true ? Level::Debug : Level::Info;
 }
 
-$log = new Logger('Api');
+$log = new Logger($apiConfig['name']);
 $log->pushHandler( new StreamHandler('php://stdout', $logLevel));
 
 return $log;

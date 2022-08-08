@@ -57,15 +57,13 @@ class CouchDB
         $this->url = "$host:$port/$database";
         $this->user = $user;
         $this->password = $password;
-
-        $this->createDatabase();
     }
 
     /**
      * Creates the database if it does not exist
      * @return bool
      */
-    protected function createDatabase(): bool
+    public function createDatabase(): bool
     {
         $existingDB = $this->http->withBasicAuth($this->user, $this->password)
             ->get($this->url);

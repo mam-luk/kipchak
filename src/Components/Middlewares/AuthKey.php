@@ -37,7 +37,7 @@ class AuthKey
                 $request->getHeader('x-api-key')[0] :
                 Http\Request::getQueryParam($request, 'key');
 
-            if (isset($authConfig['authorised_keys'][$key])) {
+            if (isset($authConfig['key']['authorised_keys'][$key])) {
                 // Key matched!
                 $response = $handler->handle($request);
 
