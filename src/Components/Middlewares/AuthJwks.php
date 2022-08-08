@@ -21,11 +21,14 @@ class AuthJwks
 
     private FilesystemAdapter $cache;
 
-    public function __construct(ContainerInterface $container)
+    private array $scopes;
+
+    public function __construct(ContainerInterface $container, array $scopes = [])
     {
         $this->container = $container;
         $this->cache = $container->get('cache.file');
         $this->log = $container->get('logger');
+        $this->scopes = $scopes;
 
     }
 
@@ -69,8 +72,19 @@ class AuthJwks
 
                     $token = JWKS::decode($jwt, $jwks);
 
-                    if ($authConfig['jwks']['validate_scopes']) {
-                        if (!JWKS::hasScopes($token->scope, $authConfig['jwks']['scopes'])) {
+                    // If config says validate scopes and no scopes are passed to the MW, use the default ones
+                    if (empty($this->scopes)) {
+                        if ($authConfig['jwks']['validate_scopes']) {
+                            if (!JWKS::hasScopes($token->scope, $authConfig['jwks']['scopes'])) {
+                                return Http\Response::json($response,
+                                    'Missing required scope(s)',
+                                    401
+                                );
+                            }
+                        }
+                    } else {
+                        // Custom scopes have been passed, validate those
+                        if (!JWKS::hasScopes($token->scope, $this->scopes)) {
                             return Http\Response::json($response,
                                 'Missing required scope(s)',
                                 401
