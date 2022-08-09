@@ -13,6 +13,8 @@
   },
   "require": {
     "php": ">=8.1",
+    "bryanjhv/slim-session": "~4.0",
+    "doctrine/orm": "^2.13",
     "firebase/php-jwt": "^6.3",
     "guzzlehttp/guzzle": "^7.4",
     "illuminate/http": "^9.23",
@@ -20,8 +22,7 @@
     "php-di/php-di": "^6.4",
     "slim/psr7": "^1.5",
     "slim/slim": "4.*",
-    "symfony/cache": "^6.1",
-    "bryanjhv/slim-session": "~4.0"
+    "symfony/cache": "^6.1"
   },
   "require-dev": {
     "phpunit/phpunit": "^9.5"

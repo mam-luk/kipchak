@@ -14,5 +14,4 @@ if (isset($container->get('config')['kipchak.couchdb']['connections']) && $conta
                 $httpClient, $connectionDetails['port']);
         });
     }
-
 }
