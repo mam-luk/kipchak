@@ -39,8 +39,8 @@ You get everything that we need to use at Mamluk and Islamic Network to build AP
   * Laravel's HTTP client bundled in (which is a breath of fresh air if you use Guzzle regularly)
   * Monolog for consistent logging
   * A posture on how to handle routes, controllers, models and the general layout of your application
-  * Generation of OpenAPI specifications for your APIs (work in progress)
-  * Data Transfer Objects (https://github.com/spatie/data-transfer-object - work in progress) 
+  * Generation of OpenAPI specifications for your APIs
+  * Data Transfer Objects (via https://github.com/spatie/data-transfer-object) 
   * Pre-configured testing tools (work in progress)
 
 ## Great. Why on earth is this ADK called Kipchak? And who and what is a Mamluk?
