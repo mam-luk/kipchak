@@ -1,7 +1,7 @@
 {
   "name": "mamluk/kipchak",
   "type": "library",
-  "description": "A PHP Library to consistently build microservices and APIs",
+  "description": "An API Development Kit (ADK) to consistently build and manage APIs",
   "keywords": [
     "APIs",
     "microservices"
