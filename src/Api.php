@@ -25,6 +25,20 @@ class Api
         return $app;
     }
 
+    public static function bootCli(): App
+    {
+        // Create DI Container and App
+        $container = new Container();
+        AppFactory::setContainer($container);
+        $app = AppFactory::create();
+        $app->addRoutingMiddleware();
+        $container = $app->getContainer();
+
+        self::loadDependencies($app, $container);
+
+        return $app;
+    }
+
     public static function loadDependencies(App $app): void
     {
         $container = $app->getContainer();

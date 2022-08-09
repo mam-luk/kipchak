@@ -3,7 +3,7 @@
 use Psr\Container\ContainerInterface;
 use function Mamluk\Kipchak\config;
 
-$container->set('config', function(ContainerInterface $c) {
+$container->set('config', function(ContainerInterface $c): array {
     $configPath = realpath(__DIR__ . '/../../../../config/');
 
     $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($configPath));
