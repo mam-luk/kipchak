@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c46686db1354f90a160f5528ef423204",
+    "content-hash": "317d5067418351a55a616cde46702b99",
     "packages": [
         {
             "name": "bryanjhv/slim-session",
@@ -1585,16 +1585,16 @@
         },
         {
             "name": "illuminate/collections",
-            "version": "v9.23.0",
+            "version": "v9.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
-                "reference": "9b862a8e7c0da5b00af75b1422d3a29080ef7adb"
+                "reference": "f9eddfa8599dd224df618b08b2502720027d1f10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/collections/zipball/9b862a8e7c0da5b00af75b1422d3a29080ef7adb",
-                "reference": "9b862a8e7c0da5b00af75b1422d3a29080ef7adb",
+                "url": "https://api.github.com/repos/illuminate/collections/zipball/f9eddfa8599dd224df618b08b2502720027d1f10",
+                "reference": "f9eddfa8599dd224df618b08b2502720027d1f10",
                 "shasum": ""
             },
             "require": {
@@ -1636,11 +1636,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2022-07-18T13:54:30+00:00"
+            "time": "2022-08-09T13:26:41+00:00"
         },
         {
             "name": "illuminate/conditionable",
-            "version": "v9.23.0",
+            "version": "v9.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/conditionable.git",
@@ -1686,7 +1686,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v9.23.0",
+            "version": "v9.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -1734,7 +1734,7 @@
         },
         {
             "name": "illuminate/filesystem",
-            "version": "v9.23.0",
+            "version": "v9.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/filesystem.git",
@@ -1796,16 +1796,16 @@
         },
         {
             "name": "illuminate/http",
-            "version": "v9.23.0",
+            "version": "v9.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/http.git",
-                "reference": "d8305835f9f531aa50088d94db8d196ec1c50e11"
+                "reference": "4a56206a6d0c1617e3a81db66cd96a744b72a385"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/http/zipball/d8305835f9f531aa50088d94db8d196ec1c50e11",
-                "reference": "d8305835f9f531aa50088d94db8d196ec1c50e11",
+                "url": "https://api.github.com/repos/illuminate/http/zipball/4a56206a6d0c1617e3a81db66cd96a744b72a385",
+                "reference": "4a56206a6d0c1617e3a81db66cd96a744b72a385",
                 "shasum": ""
             },
             "require": {
@@ -1851,20 +1851,20 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2022-07-26T13:16:08+00:00"
+            "time": "2022-08-08T19:50:46+00:00"
         },
         {
             "name": "illuminate/macroable",
-            "version": "v9.23.0",
+            "version": "v9.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
-                "reference": "25a2c6dac2b7541ecbadef952702e84ae15f5354"
+                "reference": "e3bfaf6401742a9c6abca61b9b10e998e5b6449a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/macroable/zipball/25a2c6dac2b7541ecbadef952702e84ae15f5354",
-                "reference": "25a2c6dac2b7541ecbadef952702e84ae15f5354",
+                "url": "https://api.github.com/repos/illuminate/macroable/zipball/e3bfaf6401742a9c6abca61b9b10e998e5b6449a",
+                "reference": "e3bfaf6401742a9c6abca61b9b10e998e5b6449a",
                 "shasum": ""
             },
             "require": {
@@ -1897,11 +1897,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2022-02-01T14:44:21+00:00"
+            "time": "2022-08-09T13:29:29+00:00"
         },
         {
             "name": "illuminate/session",
-            "version": "v9.23.0",
+            "version": "v9.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/session.git",
@@ -1957,16 +1957,16 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v9.23.0",
+            "version": "v9.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "cfd6d8ee1df9ce6a26a3cb205dc62446f60595e6"
+                "reference": "dc872a2a5a6ac8fe14431d7286f4ec4f70b6ac4b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/cfd6d8ee1df9ce6a26a3cb205dc62446f60595e6",
-                "reference": "cfd6d8ee1df9ce6a26a3cb205dc62446f60595e6",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/dc872a2a5a6ac8fe14431d7286f4ec4f70b6ac4b",
+                "reference": "dc872a2a5a6ac8fe14431d7286f4ec4f70b6ac4b",
                 "shasum": ""
             },
             "require": {
@@ -2022,7 +2022,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2022-08-02T13:28:47+00:00"
+            "time": "2022-08-09T06:51:20+00:00"
         },
         {
             "name": "laravel/serializable-closure",
@@ -2082,6 +2082,47 @@
                 "source": "https://github.com/laravel/serializable-closure"
             },
             "time": "2022-05-16T17:09:47+00:00"
+        },
+        {
+            "name": "mamluk/couchdb",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mam-luk/couchdb.git",
+                "reference": "271f0457e0b84329b3d8ff9115edddbbf6f4d26f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mam-luk/couchdb/zipball/271f0457e0b84329b3d8ff9115edddbbf6f4d26f",
+                "reference": "271f0457e0b84329b3d8ff9115edddbbf6f4d26f",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.4",
+                "illuminate/http": "^9.23",
+                "monolog/monolog": "^3.2",
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.5"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Mamluk\\Couch\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A CouchDB Client and SessionHandler",
+            "support": {
+                "issues": "https://github.com/mam-luk/couchdb/issues",
+                "source": "https://github.com/mam-luk/couchdb/tree/master"
+            },
+            "time": "2022-08-10T07:38:06+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -2186,16 +2227,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.60.0",
+            "version": "2.61.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "00a259ae02b003c563158b54fb6743252b638ea6"
+                "reference": "bdf4f4fe3a3eac4de84dbec0738082a862c68ba6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/00a259ae02b003c563158b54fb6743252b638ea6",
-                "reference": "00a259ae02b003c563158b54fb6743252b638ea6",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/bdf4f4fe3a3eac4de84dbec0738082a862c68ba6",
+                "reference": "bdf4f4fe3a3eac4de84dbec0738082a862c68ba6",
                 "shasum": ""
             },
             "require": {
@@ -2284,7 +2325,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-07-27T15:57:48+00:00"
+            "time": "2022-08-06T12:41:24+00:00"
         },
         {
             "name": "nikic/fast-route",
@@ -7545,7 +7586,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "mamluk/couchdb": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
