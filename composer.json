@@ -20,6 +20,7 @@
     "illuminate/http": "^9.23",
     "monolog/monolog": "^3.2",
     "php-di/php-di": "^6.4",
+    "slim/http-cache": "^1.1",
     "slim/psr7": "^1.5",
     "slim/slim": "4.*",
     "spatie/data-transfer-object": "^3.8",

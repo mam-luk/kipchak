@@ -3,6 +3,7 @@
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Symfony\Component\Cache\Adapter\MemcachedAdapter;
+use Slim\HttpCache\CacheProvider;
 
 $container->set('cache.file', function(ContainerInterface $c): FilesystemAdapter {
     $config = $c->get('config')['kipchak.api'];
@@ -10,6 +11,11 @@ $container->set('cache.file', function(ContainerInterface $c): FilesystemAdapter
 
     return new FilesystemAdapter($namespace, 3600);
 });
+
+$container->set('cache.http', function(ContainerInterface $c) {
+    return new CacheProvider();
+});
+
 
 if (isset($container->get('config')['kipchak.memcached'])) {
     $memcachedConfig = $container->get('config')['kipchak.memcached'];
