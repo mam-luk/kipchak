@@ -22,7 +22,7 @@ class Response
         $response->getBody()->write($json);
 
         if ($cache) {
-            $response = $provider->withExpires($response, $cacheTTL);
+            $response = $provider->withExpires($response, time() + $cacheTTL);
             $response = $provider->withEtag($response, md5($json));
         }
 
