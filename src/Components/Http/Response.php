@@ -23,7 +23,7 @@ class Response
 
         if ($cache) {
             $response = $provider->withExpires($response, $cacheTTL);
-            $response = $provider->withEtag($response, $json);
+            $response = $provider->withEtag($response, md5($json));
         }
 
         return $response->withHeader('Content-Type', 'application/json')
