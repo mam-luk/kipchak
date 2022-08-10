@@ -1,7 +1,7 @@
 <?php
 
 use Slim\Middleware\Session;
-use Mamluk\Kipchak\Components\Session\Handlers\CouchDB;
+use Mamluk\Couch\Session\Handler;
 
 if (isset($container->get('config')['kipchak.sessions'])) {
     $csess = $container->get('config')['kipchak.sessions'];
@@ -28,7 +28,7 @@ if (isset($container->get('config')['kipchak.sessions'])) {
                         'httponly' => $csess['cookie_options']['httponly'],
                         'samesite' => $csess['cookie_options']['samesite'],
                         'handler' =>
-                            new CouchDB(
+                            new Handler(
                                 $csess['lifetime'],
                                 $couchConfig['username'],
                                 $couchConfig['password'],

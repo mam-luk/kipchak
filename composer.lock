@@ -2089,12 +2089,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mam-luk/couchdb.git",
-                "reference": "271f0457e0b84329b3d8ff9115edddbbf6f4d26f"
+                "reference": "9fccb2fbb6f2d43f53e68cb0e643b845dd1860ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mam-luk/couchdb/zipball/271f0457e0b84329b3d8ff9115edddbbf6f4d26f",
-                "reference": "271f0457e0b84329b3d8ff9115edddbbf6f4d26f",
+                "url": "https://api.github.com/repos/mam-luk/couchdb/zipball/9fccb2fbb6f2d43f53e68cb0e643b845dd1860ef",
+                "reference": "9fccb2fbb6f2d43f53e68cb0e643b845dd1860ef",
                 "shasum": ""
             },
             "require": {
@@ -2122,7 +2122,7 @@
                 "issues": "https://github.com/mam-luk/couchdb/issues",
                 "source": "https://github.com/mam-luk/couchdb/tree/master"
             },
-            "time": "2022-08-10T07:38:06+00:00"
+            "time": "2022-08-10T07:54:10+00:00"
         },
         {
             "name": "monolog/monolog",

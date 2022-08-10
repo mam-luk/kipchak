@@ -1,7 +1,7 @@
 <?php
 
 use Psr\Container\ContainerInterface;
-use Mamluk\Kipchak\Components\Database\Clients\CouchDB;
+use Mamluk\Couch\Database\Client;
 
 if (isset($container->get('config')['kipchak.couchdb']['connections']) && $container->get('config')['kipchak.couchdb']['enabled']) {
     $connections = $container->get('config')['kipchak.couchdb']['connections'];
@@ -9,7 +9,7 @@ if (isset($container->get('config')['kipchak.couchdb']['connections']) && $conta
     $httpClient = $container->get('http.client');
     foreach($connections as $connectionName => $connectionDetails) {
         $container->set('database.couchdb.' . $connectionName, function (ContainerInterface $c) use ($connectionDetails, $httpClient, $logger): CouchDB {
-            return new CouchDB($connectionDetails['username'], $connectionDetails['password'],
+            return new Client($connectionDetails['username'], $connectionDetails['password'],
                 $connectionDetails['database'], $connectionDetails['host'], $logger,
                 $httpClient, $connectionDetails['port']);
         });
