@@ -4,7 +4,7 @@
 
 This project is currently in 'alpha'. Use with caution.
 
-## What is Kipchak?
+## What Kipchak is?
 
 Kipchak is an API Development Kit (or ADK) to rapidly build APIs. It's built on years of experience
 and managing APIs in production environments that handle thousands of concurrent requests. This kit has been put together 
