@@ -31,7 +31,7 @@ You get everything that we need to use at Mamluk and Islamic Network to build AP
 * The following components pre-installed, and enabled / disabled via YAML files:
   * Symfony Cache, pre-setup for Memached and File System Caching 
   * Configurable HTTP caching headers
-  * Doctrine DBAL and ORM, to connect to and deal with multiple RDBMS (yes, we thought through this with Propel, Atlas and Eloquent too, but settled on Doctrine. We'll share why are some point.)
+  * Doctrine DBAL and ORM, to connect to and deal with multiple RDBMS (yes, we thought through this with Propel, Atlas and Eloquent too, but settled on Doctrine. We'll share why at some point.)
   * A Couch DB Client for integration with a reliable, distributed NoSQL database
   * Session Handling within Memcached or CouchDB (and maybe your choice of RBMS, although due to row locking this is not bundled in yet)
   * OAuth 2 based authentication and authorisation with JWKS
