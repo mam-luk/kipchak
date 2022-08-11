@@ -8,7 +8,7 @@ This project is currently in 'alpha'. Use with caution.
 
 Kipchak is an API Development Kit (or ADK) to rapidly build APIs. It's built on years of experience
 and managing APIs in production environments that handle thousands of concurrent requests. This kit has been put together 
-to make it easy for our engineers to build qnd maintain such APIs. It's built on top of the
+to make it easy for our engineers to build and maintain such APIs. It's built on top of the
 <a href="https://www.slimframework.com/" target="_blank">Slim Framework</a> and may be described as a packaged 
 version of Slim. It does not take anything away from Slim and you can still use anything within Slim with Kipchak.
 
