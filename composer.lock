@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "317d5067418351a55a616cde46702b99",
+    "content-hash": "74a32dbb14ca0a780f84d29afc3f66cf",
     "packages": [
         {
             "name": "bryanjhv/slim-session",
@@ -3115,62 +3115,6 @@
                 "source": "https://github.com/ralouphie/getallheaders/tree/develop"
             },
             "time": "2019-03-08T08:55:37+00:00"
-        },
-        {
-            "name": "slim/http-cache",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/slimphp/Slim-HttpCache.git",
-                "reference": "d1a091aca45695a2159194132872f4a544416bc9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/slimphp/Slim-HttpCache/zipball/d1a091aca45695a2159194132872f4a544416bc9",
-                "reference": "d1a091aca45695a2159194132872f4a544416bc9",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.2 || ^8.0",
-                "psr/http-message": "^1.0",
-                "psr/http-server-middleware": "^1.0"
-            },
-            "require-dev": {
-                "phpstan/phpstan": "^0.12.28",
-                "phpunit/phpunit": "^8.5.13 || ^9.3.8",
-                "slim/psr7": "^1.1",
-                "squizlabs/php_codesniffer": "^3.5"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Slim\\HttpCache\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Josh Lockhart",
-                    "email": "hello@joshlockhart.com",
-                    "homepage": "http://joshlockhart.com"
-                }
-            ],
-            "description": "Slim Framework HTTP cache middleware and service provider",
-            "homepage": "https://www.slimframework.com",
-            "keywords": [
-                "cache",
-                "framework",
-                "middleware",
-                "slim"
-            ],
-            "support": {
-                "issues": "https://github.com/slimphp/Slim-HttpCache/issues",
-                "source": "https://github.com/slimphp/Slim-HttpCache/tree/1.1.0"
-            },
-            "time": "2020-12-08T17:32:05+00:00"
         },
         {
             "name": "slim/psr7",

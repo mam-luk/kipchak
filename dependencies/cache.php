@@ -12,10 +12,6 @@ $container->set('cache.file', function(ContainerInterface $c): FilesystemAdapter
     return new FilesystemAdapter($namespace, 3600);
 });
 
-$container->set('cache.http', function(ContainerInterface $c) {
-    return new CacheProvider();
-});
-
 
 if (isset($container->get('config')['kipchak.memcached'])) {
     $memcachedConfig = $container->get('config')['kipchak.memcached'];
