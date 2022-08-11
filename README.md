@@ -20,7 +20,7 @@ head over to https://github.com/mam-luk/kipchak-template.
 Kipchak is not a framework like Symfony or Laravel. In fact, it's built on the 
 <a href="https://www.slimframework.com/" target="_blank">Slim Framework</a>. Why? 
 Because Slim is fast and efficient and has a much lower footprint than Symfony and Laravel, which, whilst  
-have their merits, have a much larger memory and processing footprint. Kipchak, however, borrows libraries 
+having their merits, have a much larger memory and processing footprint. Kipchak, however, borrows libraries 
 from Symfony and Laravel to enable the ADK.
 
 ## OK, so it's Slim. What do I get by using it?
