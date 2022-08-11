@@ -7,8 +7,8 @@ This project is currently in 'alpha'. Use with caution.
 ## What is Kipchak?
 
 Kipchak is an API Development Kit (or ADK) to rapidly build APIs. It's built on years of experience
-and managing APIs in production that handle thousands of concurrent requests. This kit has been put together 
-so it becomes easier for our teams to maintain and upgrade such APIs. It's built on top of the
+and managing APIs in production environments that handle thousands of concurrent requests. This kit has been put together 
+to make it easy for our teams to maintain and upgrade such APIs. It's built on top of the
 <a href="https://www.slimframework.com/" target="_blank">Slim Framework</a> and may be described as a packaged 
 version of Slim. It does not take anything away from Slim and you can still use anything within Slim with Kipchak.
 
@@ -19,9 +19,9 @@ head over to https://github.com/mam-luk/kipchak-template.
 ## Not so fast, I want to learn more. What Kipchak is not?
 Kipchak is not a framework like Symfony or Laravel. In fact, it's built on the 
 <a href="https://www.slimframework.com/" target="_blank">Slim Framework</a>. Why? 
-Because Slim is fast and efficient and has a much lower footprint than Symfony and Laravel, which, whilst they 
-have their merits, have much larger memory and processing footprint. Kipchak, however, borrows from Symfony and Laravel
-to enable the ADK.
+Because Slim is fast and efficient and has a much lower footprint than Symfony and Laravel, which, whilst  
+have their merits, have a much larger memory and processing footprint. Kipchak, however, borrows libraries 
+from Symfony and Laravel to enable the ADK.
 
 ## OK, so it's Slim. What do I get by using it?
 You get everything that we need to use at Mamluk and Islamic Network to build APIs:
@@ -46,4 +46,17 @@ You get everything that we need to use at Mamluk and Islamic Network to build AP
 
 ## Great. Why on earth is this ADK called Kipchak? And who and what is a Mamluk?
 
+This will be explained soon. It's more important to move Kipchak out of Alpha first.
+
 ## Credits and Thanks
+
+* Slim Framework
+* Symfony (for Symfony Cache and Doctrine)
+* Laravel for the HTTP client
+* Monolog
+* Spatie for the Data Transfer Objects library
+* Robert Allen for the Swagger PHP library
+* Byran Horna for Slim Session
+
+For a full list of packages within Kipchak, see https://github.com/mam-luk/kipchak/blob/master/composer.json#L14.
+
