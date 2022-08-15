@@ -1,5 +1,4 @@
 [![](https://img.shields.io/github/license/mam-luk/kipchak.svg)](https://github.com/mam-luk/kipchak/blob/master/LICENSE)
-![GitHub All Releases](https://img.shields.io/github/downloads/mam-luk/kipchak/total)
 [![](https://img.shields.io/github/release/mam-luk/kipchak.svg)](https://github.com/mam-luk/kipchak/releases)
 
 <img src=".mamluk/logo.svg" alt="Kipchak by Mamluk" title="Kipchak by Mamluk - an API Toolkit" />
