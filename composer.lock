@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "74a32dbb14ca0a780f84d29afc3f66cf",
+    "content-hash": "7083a4db0f03ea937f1b063ef4adf951",
     "packages": [
         {
             "name": "bryanjhv/slim-session",
@@ -2085,7 +2085,7 @@
         },
         {
             "name": "mamluk/couchdb",
-            "version": "dev-master",
+            "version": "0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mam-luk/couchdb.git",
@@ -2106,7 +2106,6 @@
             "require-dev": {
                 "phpunit/phpunit": "^9.5"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -2120,7 +2119,7 @@
             "description": "A CouchDB Client and SessionHandler",
             "support": {
                 "issues": "https://github.com/mam-luk/couchdb/issues",
-                "source": "https://github.com/mam-luk/couchdb/tree/master"
+                "source": "https://github.com/mam-luk/couchdb/tree/0.1"
             },
             "time": "2022-08-10T08:03:26+00:00"
         },
@@ -7530,9 +7529,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "mamluk/couchdb": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
