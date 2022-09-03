@@ -20,8 +20,8 @@ if (isset($container->get('config')['kipchak.doctrine']['dbal'])  && $container-
         $container->set('database.doctrine.dbal.' . $dbalConnectionName, function (ContainerInterface $c) use ($dbalConnectionName, $dbalConnection): Connection {
             return DriverManager::getConnection(
                 [
-                    'dbname'    => $dbalConnection['database'],
-                    'user'      =>  $dbalConnection['username'],
+                    'dbname'    => $dbalConnection['dbname'],
+                    'user'      =>  $dbalConnection['user'],
                     'password'  =>  $dbalConnection['password'],
                     'host'      =>  $dbalConnection['host'],
                     'driver'    =>  $dbalConnection['driver'],
