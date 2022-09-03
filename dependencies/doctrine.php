@@ -54,12 +54,23 @@ if (isset($container->get('config')['kipchak.doctrine']['orm'])  && $container->
                 }
             }
 
+            if ($emConnection['metadata_format'] === 'attributes') {
                 $emConfig = ORMSetup::createAttributeMetadataConfiguration(
                     $emConnection['metadata_dirs'],
                     $emConnection['dev_mode'],
                     '/tmp/doctrine-proxies/' . $emName,
                     $cache
                 );
+            }
+
+            if ($emConnection['metadata_format'] === 'annotations') {
+                $emConfig = ORMSetup::createAnnotationMetadataConfiguration(
+                    $emConnection['metadata_dirs'],
+                    $emConnection['dev_mode'],
+                    '/tmp/doctrine-proxies/' . $emName,
+                    $cache
+                );
+            }
 
             return EntityManager::create($c->get('config')['kipchak.doctrine']['dbal']['connections'][$emConnection['connection']], $emConfig);
 
