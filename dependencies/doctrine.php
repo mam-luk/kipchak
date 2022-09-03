@@ -58,7 +58,7 @@ if (isset($container->get('config')['kipchak.doctrine']['orm'])  && $container->
                 $emConfig = ORMSetup::createAttributeMetadataConfiguration(
                     $emConnection['metadata_dirs'],
                     $emConnection['dev_mode'],
-                    '/tmp/doctrine-proxies/' . $emName,
+                    '/tmp/' . $emName,
                     $cache
                 );
             }
@@ -67,7 +67,7 @@ if (isset($container->get('config')['kipchak.doctrine']['orm'])  && $container->
                 $emConfig = ORMSetup::createAnnotationMetadataConfiguration(
                     $emConnection['metadata_dirs'],
                     $emConnection['dev_mode'],
-                    '/tmp/doctrine-proxies/' . $emName,
+                    '/tmp/' . $emName,
                     $cache
                 );
             }
