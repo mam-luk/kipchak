@@ -13,6 +13,10 @@ class Request
         }
 
         return null;
+    }
 
+    public static function getAttribute(ServerRequestInterface $request, string $name): mixed
+    {
+        return $request->getAttribute($name);
     }
 }
