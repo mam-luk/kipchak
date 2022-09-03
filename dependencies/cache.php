@@ -3,7 +3,6 @@
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Symfony\Component\Cache\Adapter\MemcachedAdapter;
-use Slim\HttpCache\CacheProvider;
 
 /**
  * @var $container ContainerInterface
