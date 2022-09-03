@@ -21,7 +21,7 @@ if (isset($container->get('config')['kipchak.memcached'])) {
 
     if ($memcachedConfig['enabled'] && isset($memcachedConfig['pools'])) {
         foreach ($memcachedConfig['pools'] as $poolName => $poolConnection) {
-            $container->set('cache.memcached.' . $poolName, function (ContainerInterface $c) use ($memcachedConfig, $poolConnection): MemcachedAdapter {
+            $container->set('cache.memcached.' . $poolName, function (ContainerInterface $c) use ($memcachedConfig, $poolConnection, $poolName): MemcachedAdapter {
                 $namespace = isset($c->get('config')['kipchak.api']['name']) ?? 'apiCache';
 
                 $memcached = new Memcached($namespace);
@@ -31,6 +31,12 @@ if (isset($container->get('config')['kipchak.memcached'])) {
                 $memcached->setOption(Memcached::OPT_REMOVE_FAILED_SERVERS, true);
                 $memcached->setOption(Memcached::OPT_RETRY_TIMEOUT, 1);
                 $memcached->addServers($poolConnection);
+
+                if($memcached->getStats() !== false) {
+                    return new MemcachedAdapter($memcached, $namespace, 3600);
+                } else {
+                    throw new Exception('Error: Unable to connect to Memcached Pool ' . $poolName);
+                }
 
                 return new MemcachedAdapter($memcached, $namespace, 3600);
             });
