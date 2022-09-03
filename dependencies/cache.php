@@ -5,6 +5,10 @@ use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Symfony\Component\Cache\Adapter\MemcachedAdapter;
 use Slim\HttpCache\CacheProvider;
 
+/**
+ * @var $container ContainerInterface
+ */
+
 $container->set('cache.file', function(ContainerInterface $c): FilesystemAdapter {
     $config = $c->get('config')['kipchak.api'];
     $namespace = $config['name'] ?? 'KipchakApiCache';

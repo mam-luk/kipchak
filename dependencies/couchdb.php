@@ -3,6 +3,10 @@
 use Psr\Container\ContainerInterface;
 use Mamluk\Couch\Database\Client;
 
+/**
+ * @var $container ContainerInterface
+ */
+
 if (isset($container->get('config')['kipchak.couchdb']['connections']) && $container->get('config')['kipchak.couchdb']['enabled']) {
     $connections = $container->get('config')['kipchak.couchdb']['connections'];
     $logger = $container->get('logger');

@@ -6,13 +6,18 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Doctrine\ORM\ORMSetup;
+use Doctrine\DBAL\Connection;
+
+/**
+ * @var $container ContainerInterface
+ */
 
 // Create all Doctrine DBAL Connections
 if (isset($container->get('config')['kipchak.doctrine']['dbal'])  && $container->get('config')['kipchak.doctrine']['dbal']['enabled']) {
     $dbalConfig = $container->get('config')['kipchak.doctrine']['dbal'];
     $dbalConnections = $dbalConfig['connections'];
     foreach ($dbalConnections as $dbalConnectionName => $dbalConnection) {
-        $container->set('database.doctrine.dbal.' . $dbalConnectionName, function (ContainerInterface $c) use ($dbalConnectionName, $dbalConnection): DriverManager {
+        $container->set('database.doctrine.dbal.' . $dbalConnectionName, function (ContainerInterface $c) use ($dbalConnectionName, $dbalConnection): Connection {
             return DriverManager::getConnection(
                 [
                     'dbname'    => $dbalConnection['database'],

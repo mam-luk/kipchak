@@ -3,6 +3,10 @@
 use Psr\Container\ContainerInterface;
 use function Mamluk\Kipchak\config;
 
+/**
+ * @var $container ContainerInterface
+ */
+
 $container->set('config', function(ContainerInterface $c): array {
     $configPath = realpath(__DIR__ . '/../../../../config/');
 

@@ -5,6 +5,10 @@ use Monolog\Level;
 Use Monolog\Handler\StreamHandler;
 use Psr\Container\ContainerInterface;
 
+/**
+ * @var $container ContainerInterface
+ */
+
 $container->set('logger', function(ContainerInterface $c): Logger {
 
     if (isset($c->get('config')['kipchak.api'])) {
