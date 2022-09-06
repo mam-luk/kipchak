@@ -67,7 +67,7 @@ if (isset($container->get('config')['kipchak.doctrine']['orm'])  && $container->
                 $emConfig = ORMSetup::createAnnotationMetadataConfiguration(
                     $emConnection['metadata_dirs'],
                     $emConnection['dev_mode'],
-                    '/tmp/' . $emName,
+                    '/tmp',
                     $cache
                 );
             }
