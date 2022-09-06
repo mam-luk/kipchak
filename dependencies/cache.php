@@ -32,11 +32,11 @@ if (isset($container->get('config')['kipchak.memcached'])) {
                 $memcached->setOption(Memcached::OPT_RETRY_TIMEOUT, 1);
                 $memcached->addServers($poolConnection);
 
-                if($memcached->getStats() !== false) {
-                    return new MemcachedAdapter($memcached, $namespace, 3600);
-                } else {
-                    throw new Exception('Error: Unable to connect to Memcached Pool ' . $poolName);
-                }
+//                if($memcached->getStats() !== false) {
+//                    return new MemcachedAdapter($memcached, $namespace, 3600);
+//                } else {
+//                    throw new Exception('Error: Unable to connect to Memcached Pool ' . $poolName);
+//                }
 
                 return new MemcachedAdapter($memcached, $namespace, 3600);
             });
