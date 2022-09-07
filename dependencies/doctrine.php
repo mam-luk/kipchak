@@ -7,6 +7,7 @@ use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Doctrine\ORM\ORMSetup;
 use Doctrine\DBAL\Connection;
+use Monolog\Logger;
 
 /**
  * @var $container ContainerInterface
@@ -37,20 +38,32 @@ if (isset($container->get('config')['kipchak.doctrine']['dbal'])  && $container-
 if (isset($container->get('config')['kipchak.doctrine']['orm'])  && $container->get('config')['kipchak.doctrine']['orm']['enabled']) {
     $ormConfig = $container->get('config')['kipchak.doctrine']['orm'];
     $entityManagers = $ormConfig['entity_managers'];
+    /**
+     * @var $log Logger
+     */
+    $log = $container->get('logger');
     foreach ($entityManagers as $emName => $emConnection) {
-        $container->set('database.doctrine.entitymanager.' . $emName, function (ContainerInterface $c) use ($emName, $emConnection): EntityManager {
+        $container->set('database.doctrine.entitymanager.' . $emName, function (ContainerInterface $c) use ($emName, $emConnection, $log): EntityManager {
+            if (!is_dir($emConnection['cache_config']['file']['dir'])) {
+                $log->debug('Doctrine ORM: Creating Cache Directory '. $emConnection['cache_config']['file']['dir'] . '.');
+                mkdir ($emConnection['cache_config']['file']['dir'], 0777, true);
+            }
+
             if ($emConnection['dev_mode']) {
+                $log->debug('Doctrine ORM: Dev mode detected. Using Array Adapter for caching.');
                 $cache = new ArrayAdapter();
             } elseif (!$emConnection['dev_mode'] && $emConnection['cache']['enabled']) {
                 $cacheStore = $emConnection['cache']['store'];
+                $log->debug('Doctrine ORM: Production mode detected. Cache store is set to ' . $cacheStore . '.');
                 if ($cacheStore == 'file') {
-                    $cache = new FilesystemAdapter(directory: $emConnection['cache_config']['file']['dir']);
+                    $cache = new FilesystemAdapter(namespace: $emName,  directory: $emConnection['cache_config']['file']['dir']);
                 } elseif ($cacheStore == 'memcached') {
+                    $log->debug('Doctrine ORM: Memcached pool name is set to '. $cacheStore . '.');
                     $connectionPool = $emConnection['cache_config']['memcached']['pool'];
                     $cache = $c->get('cache.memcached.' . $connectionPool);
                 } else {
                     // Default to file store anyway. We'll have this separately incase we add more, like Redis.
-                    $cache = new FilesystemAdapter(directory: $emConnection['cache_config']['file']['dir']);
+                    $cache = new FilesystemAdapter(namespace: $emName, directory: $emConnection['cache_config']['file']['dir']);
                 }
             }
 
@@ -58,7 +71,7 @@ if (isset($container->get('config')['kipchak.doctrine']['orm'])  && $container->
                 $emConfig = ORMSetup::createAttributeMetadataConfiguration(
                     $emConnection['metadata_dirs'],
                     $emConnection['dev_mode'],
-                    '/tmp/' . $emName,
+                    null,
                     $cache
                 );
             }
@@ -67,7 +80,7 @@ if (isset($container->get('config')['kipchak.doctrine']['orm'])  && $container->
                 $emConfig = ORMSetup::createAnnotationMetadataConfiguration(
                     $emConnection['metadata_dirs'],
                     $emConnection['dev_mode'],
-                    '/tmp',
+                    null,
                     $cache
                 );
             }
