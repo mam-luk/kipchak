@@ -25,7 +25,7 @@
     "spatie/data-transfer-object": "^3.8",
     "symfony/cache": "^6.1",
     "zircote/swagger-php": "^4.4",
-    "mamluk/couchdb": "0.1"
+    "mamluk/couchdb": "0.2"
   },
   "require-dev": {
     "phpunit/phpunit": "^9.5"
