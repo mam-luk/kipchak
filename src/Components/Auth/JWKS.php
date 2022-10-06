@@ -9,6 +9,9 @@ class JWKS
 {
     public static function decode(string $jwt, array $jwks): \stdClass
     {
+        // Set leeway to allow for clock sync changes between client and server.
+        JWT::$leeway = 1;
+        
         return JWT::decode($jwt,
             JWK::parseKeySet($jwks)
         );
