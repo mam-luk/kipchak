@@ -32,17 +32,24 @@ class AuthKey
         $authConfig = $this->container->get('config')['kipchak.auth'];
 
 
-            $response = new Response();
-            $key = isset($request->getHeader('apikey')[0]) ?
-                $request->getHeader('apikey')[0] :
-                Http\Request::getQueryParam($request, 'apikey');
+        $response = new Response();
 
-            if (isset($authConfig['key']['authorised_keys'][$key])) {
-                // Key matched!
-                $response = $handler->handle($request);
+        if ($request->getMethod() === 'OPTIONS' && $authConfig['key']['ignore_options']) {
+            $response = $handler->handle($request);
 
-                return $response;
-            }
+            return $response;
+        }
+
+        $key = isset($request->getHeader('apikey')[0]) ?
+            $request->getHeader('apikey')[0] :
+            Http\Request::getQueryParam($request, 'apikey');
+
+        if (isset($authConfig['key']['authorised_keys'][$key])) {
+            // Key matched!
+            $response = $handler->handle($request);
+
+            return $response;
+        }
 
         return Http\Response::json($response,
             'Missing or invalid key',

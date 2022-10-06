@@ -44,8 +44,9 @@ class AuthJwks
     {
         $authConfig = $this->container->get('config')['kipchak.auth'];
         $response = new Response();
+        $ignoreOptionsMethod = $request->getMethod() === 'OPTIONS' && $authConfig['ignore_options'];
 
-        if (isset($request->getHeader('Authorization')[0])) {
+        if (!$ignoreOptionsMethod && isset($request->getHeader('Authorization')[0])) {
             $authHeader = $request->getHeader('Authorization')[0];
             if (!preg_match('/Bearer\s(\S+)/', $authHeader, $matches)) {
                 // No Bearer token found.
