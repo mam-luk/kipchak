@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Mamluk\Kipchak\Components\Middlewares;
 
 use Mamluk\Kipchak\Components\Http;
@@ -44,9 +43,14 @@ class AuthJwks
     {
         $authConfig = $this->container->get('config')['kipchak.auth'];
         $response = new Response();
-        $ignoreOptionsMethod = $request->getMethod() === 'OPTIONS' && $authConfig['ignore_options'];
+        if ($request->getMethod() === 'OPTIONS' && $authConfig['jwks']['ignore_options']) {
+            $response = $handler->handle($request);
 
-        if (!$ignoreOptionsMethod && isset($request->getHeader('Authorization')[0])) {
+            return $response;
+        }
+
+
+        if (isset($request->getHeader('Authorization')[0])) {
             $authHeader = $request->getHeader('Authorization')[0];
             if (!preg_match('/Bearer\s(\S+)/', $authHeader, $matches)) {
                 // No Bearer token found.
