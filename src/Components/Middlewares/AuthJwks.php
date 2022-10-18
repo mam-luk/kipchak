@@ -43,11 +43,16 @@ class AuthJwks
     {
         $authConfig = $this->container->get('config')['kipchak.auth'];
         $response = new Response();
-        if ($request->getMethod() === 'OPTIONS' && $authConfig['jwks']['ignore_options']) {
+
+        if (
+            (isset($authConfig['jwks']['ignore_options']) && $request->getMethod() === 'OPTIONS' && $authConfig['jwks']['ignore_options']) ||
+            (isset($authConfig['jwks']['ignore_paths']) && in_array($request->getUri()->getPath(), $authConfig['jwks']['ignore_paths']))
+        ) {
             $response = $handler->handle($request);
 
             return $response;
         }
+
 
 
         if (isset($request->getHeader('Authorization')[0])) {
