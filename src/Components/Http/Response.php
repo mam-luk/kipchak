@@ -16,14 +16,19 @@ class Response
             ];
     }
 
-    public static function json(ResponseInterface $response, mixed $data, int $code, bool $cache = false, int $cacheTTL = 3600): ResponseInterface
+    public static function json(ResponseInterface $response, mixed $data, int $code, bool $cache = false, int $cacheTTL = 3600, array $cacheControlHeaders = []): ResponseInterface
     {
         $json = json_encode(self::build($data, $code));
         $response->getBody()->write($json);
 
+        if (empty($cacheControlHeaders)) {
+            $headersString = '';
+        } else {
+            $headersString = implode(',', $cacheControlHeaders);
+        }
         if ($cache) {
             return $response->withHeader('Content-Type', 'application/json')
-                ->withAddedHeader('Cache-Control', 'public, must-revalidate, max-age=' . $cacheTTL)
+                ->withAddedHeader('Cache-Control', $headersString . ',max-age=' . $cacheTTL)
                 ->withAddedHeader('ETag', md5($json))
                 ->withStatus($code);
         }
