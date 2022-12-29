@@ -32,7 +32,8 @@
   },
   "autoload": {
     "psr-4": {
-      "Mamluk\\Kipchak\\": "src/"
+      "Mamluk\\Kipchak\\": "src/",
+      "Mamluk\\Kipchak\\Components\\Data\\": "vendor/cuyz/valinor/src/"
     }
   },
   "autoload-dev": {
