@@ -22,7 +22,7 @@
     "php-di/php-di": "^6.4",
     "slim/psr7": "^1.5",
     "slim/slim": "4.*",
-    "spatie/data-transfer-object": "^3.8",
+    "spatie/laravel-data": "^2.2.1",
     "symfony/cache": "^6.1",
     "zircote/swagger-php": "^4.4",
     "mamluk/couchdb": "0.6"
