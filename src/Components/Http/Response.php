@@ -24,11 +24,11 @@ class Response
         if (empty($cacheControlHeaders)) {
             $headersString = '';
         } else {
-            $headersString = implode(',', $cacheControlHeaders);
+            $headersString = implode(',', $cacheControlHeaders) . ',';
         }
         if ($cache) {
             return $response->withHeader('Content-Type', 'application/json')
-                ->withAddedHeader('Cache-Control', $headersString . ',max-age=' . $cacheTTL)
+                ->withAddedHeader('Cache-Control', $headersString . 'max-age=' . $cacheTTL)
                 ->withAddedHeader('ETag', md5($json))
                 ->withStatus($code);
         }
