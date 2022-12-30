@@ -1,5 +1,4 @@
-[![](https://img.shields.io/github/license/mam-luk/kipchak.svg)](https://github.com/mam-luk/kipchak/blob/master/LICENSE)
-[![](https://img.shields.io/github/release/mam-luk/kipchak.svg)](https://github.com/mam-luk/kipchak/releases)
+[![Latest Stable Version](http://poser.pugx.org/mamluk/kipchak/v)](https://packagist.org/packages/mamluk/kipchak) [![Total Downloads](http://poser.pugx.org/mamluk/kipchak/downloads)](https://packagist.org/packages/mamluk/kipchak) [![Latest Unstable Version](http://poser.pugx.org/mamluk/kipchak/v/unstable)](https://packagist.org/packages/mamluk/kipchak) [![License](http://poser.pugx.org/mamluk/kipchak/license)](https://packagist.org/packages/mamluk/kipchak) [![PHP Version Require](http://poser.pugx.org/mamluk/kipchak/require/php)](https://packagist.org/packages/mamluk/kipchak)
 
 <img src=".mamluk/logo.svg" alt="Kipchak by Mamluk" title="Kipchak by Mamluk - an API Toolkit" />
 
