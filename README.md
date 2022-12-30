@@ -43,7 +43,7 @@ You get everything that we need to use at Mamluk and Islamic Network to build AP
   * Monolog for consistent logging
   * A posture on how to handle routes, controllers, models and the general layout of your application
   * Generation of OpenAPI specifications for your APIs
-  * Data Transfer Objects (via https://github.com/spatie/data-transfer-object) 
+  * Object Mapping / Data Transfer Objects (with Valinor) 
   * Pre-configured testing tools (work in progress)
 
 ## Great. Why on earth is this ADK called Kipchak? And who and what is a Mamluk?
@@ -56,7 +56,7 @@ This will be explained soon. It's more important to move Kipchak out of Alpha fi
 * Symfony (for Symfony Cache and Doctrine)
 * Laravel for the HTTP client
 * Monolog
-* Spatie for the Data Transfer Objects library
+* Team CuyZ for Valinor (Object Mapping / Data Trasnfer Objects)
 * Robert Allen for the Swagger PHP library
 * Byran Horna for Slim Session
 
