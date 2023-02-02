@@ -35,5 +35,11 @@ class Response
 
         return $response->withHeader('Content-Type', 'application/json')
             ->withStatus($code);
-        }
+    }
+
+    public static function redirect(ResponseInterface $response, string $url, int $code = 302): ResponseInterface
+    {
+        return $response->withStatus($code)
+            ->withHeader('Location', $url);
+    }
 }
