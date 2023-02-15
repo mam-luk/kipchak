@@ -23,13 +23,12 @@ if (isset($container->get('config')['kipchak.memcached'])) {
         foreach ($memcachedConfig['pools'] as $poolName => $poolConnection) {
             $container->set('cache.memcached.' . $poolName, function (ContainerInterface $c) use ($memcachedConfig, $poolConnection, $poolName): MemcachedAdapter {
                 $namespace = isset($c->get('config')['kipchak.api']['name']) ?? 'apiCache';
-
                 $memcached = new Memcached($namespace);
-                $memcached->setOption(Memcached::OPT_CONNECT_TIMEOUT, 10);
-                $memcached->setOption(Memcached::OPT_DISTRIBUTION, Memcached::DISTRIBUTION_CONSISTENT);
-                $memcached->setOption(Memcached::OPT_SERVER_FAILURE_LIMIT, 2);
-                $memcached->setOption(Memcached::OPT_REMOVE_FAILED_SERVERS, true);
-                $memcached->setOption(Memcached::OPT_RETRY_TIMEOUT, 1);
+                if (isset($memcachedConfig['pools_options'][$poolName])) {
+                    foreach ($memcachedConfig['pools_options'][$poolName] as $mcOption => $mcVal) {
+                        $memcached->setOption($mcOption, $mcVal);
+                    }
+                }
                 $memcached->addServers($poolConnection);
 
                 return new MemcachedAdapter($memcached, $namespace, 3600);
