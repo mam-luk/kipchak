@@ -54,7 +54,7 @@ class DefaultHandler extends ErrorHandler
         $errorDisplay = [
             'code' => $statusCode,
             'status' => $type,
-            'message' => $description,
+            'data' => $description,
         ];
 
         $payloadDisplay = json_encode($errorDisplay, JSON_PRETTY_PRINT);
