@@ -1774,16 +1774,16 @@
         },
         {
             "name": "illuminate/collections",
-            "version": "v9.52.0",
+            "version": "v9.52.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
-                "reference": "f3ac81877e98c0c096ef403ab4f0c7ed96623c18"
+                "reference": "0168d0e44ea0c4fe5451fe08cde7049b9e9f9741"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/collections/zipball/f3ac81877e98c0c096ef403ab4f0c7ed96623c18",
-                "reference": "f3ac81877e98c0c096ef403ab4f0c7ed96623c18",
+                "url": "https://api.github.com/repos/illuminate/collections/zipball/0168d0e44ea0c4fe5451fe08cde7049b9e9f9741",
+                "reference": "0168d0e44ea0c4fe5451fe08cde7049b9e9f9741",
                 "shasum": ""
             },
             "require": {
@@ -1825,11 +1825,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-02-10T19:46:01+00:00"
+            "time": "2023-02-22T11:32:27+00:00"
         },
         {
             "name": "illuminate/conditionable",
-            "version": "v9.52.0",
+            "version": "v9.52.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/conditionable.git",
@@ -1875,7 +1875,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v9.52.0",
+            "version": "v9.52.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -1923,7 +1923,7 @@
         },
         {
             "name": "illuminate/filesystem",
-            "version": "v9.52.0",
+            "version": "v9.52.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/filesystem.git",
@@ -1987,7 +1987,7 @@
         },
         {
             "name": "illuminate/http",
-            "version": "v9.52.0",
+            "version": "v9.52.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/http.git",
@@ -2047,7 +2047,7 @@
         },
         {
             "name": "illuminate/macroable",
-            "version": "v9.52.0",
+            "version": "v9.52.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -2093,7 +2093,7 @@
         },
         {
             "name": "illuminate/session",
-            "version": "v9.52.0",
+            "version": "v9.52.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/session.git",
@@ -2150,7 +2150,7 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v9.52.0",
+            "version": "v9.52.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
@@ -5651,16 +5651,16 @@
         },
         {
             "name": "zircote/swagger-php",
-            "version": "4.6.2",
+            "version": "4.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zircote/swagger-php.git",
-                "reference": "14d6c5e2bde957e03a3a5496a3b18419a0480199"
+                "reference": "f2bcbd5aa9d838d28bf5665c70f88eda6adc22cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zircote/swagger-php/zipball/14d6c5e2bde957e03a3a5496a3b18419a0480199",
-                "reference": "14d6c5e2bde957e03a3a5496a3b18419a0480199",
+                "url": "https://api.github.com/repos/zircote/swagger-php/zipball/f2bcbd5aa9d838d28bf5665c70f88eda6adc22cb",
+                "reference": "f2bcbd5aa9d838d28bf5665c70f88eda6adc22cb",
                 "shasum": ""
             },
             "require": {
@@ -5723,9 +5723,9 @@
             ],
             "support": {
                 "issues": "https://github.com/zircote/swagger-php/issues",
-                "source": "https://github.com/zircote/swagger-php/tree/4.6.2"
+                "source": "https://github.com/zircote/swagger-php/tree/4.7.0"
             },
-            "time": "2023-02-14T22:54:06+00:00"
+            "time": "2023-02-20T23:05:35+00:00"
         }
     ],
     "packages-dev": [
