@@ -82,6 +82,21 @@ class AuthJwks
 
                     $token = JWKS::decode($jwt, $jwks);
 
+                    // Let's check the expiry time on the token before anything else. If expiry is less than the current unit timestamp, reject the token.
+                    if (isset($token->exp)) {
+                        if ($token->exp < time()) {
+                            return Http\Response::json($response,
+                                'Token has expired',
+                                401
+                            );
+                        }
+                    } else {
+                        return Http\Response::json($response,
+                            'Token does not have a valid expiry timestamp',
+                            401
+                        );
+                    }
+
                     // If config says validate scopes and no scopes are passed to the MW, use the default ones
                     if (empty($this->scopes)) {
                         if ($authConfig['jwks']['validate_scopes']) {
