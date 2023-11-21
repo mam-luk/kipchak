@@ -1,6 +1,7 @@
 <?php
 
 namespace Mamluk\Kipchak\Components\Http;
+use Exception;
 
 /**
  * Class Codes

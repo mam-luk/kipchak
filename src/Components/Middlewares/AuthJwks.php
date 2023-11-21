@@ -11,6 +11,7 @@ use Mamluk\Kipchak\Components\Auth\JWKS;
 use Symfony\Contracts\Cache\ItemInterface;
 use Monolog\Logger;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
+use Exception;
 
 class AuthJwks
 {
@@ -127,10 +128,10 @@ class AuthJwks
 
                     return $response;
 
-                } catch (\Exception $e) {
+                } catch (Exception $e) {
                     return Http\Response::json($response,
-                        'Unable to decode token. ' . $e->getMessage(),
-                        401
+                        $e->getMessage(),
+                        400
                     );
                 }
             }
