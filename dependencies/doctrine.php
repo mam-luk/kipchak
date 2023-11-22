@@ -67,14 +67,6 @@ if (isset($container->get('config')['kipchak.doctrine']['orm'])  && $container->
                 }
             }
 
-            if ($emConnection['metadata_format'] === 'attributes') {
-                $emConfig = ORMSetup::createAttributeMetadataConfiguration(
-                    $emConnection['metadata_dirs'],
-                    $emConnection['dev_mode'],
-                    null,
-                    $cache
-                );
-            }
 
             if ($emConnection['metadata_format'] === 'annotations') {
                 $emConfig = ORMSetup::createAnnotationMetadataConfiguration(
@@ -83,9 +75,31 @@ if (isset($container->get('config')['kipchak.doctrine']['orm'])  && $container->
                     null,
                     $cache
                 );
+            } else { // default to attributes if not set
+                $emConfig = ORMSetup::createAttributeMetadataConfiguration(
+                    $emConnection['metadata_dirs'],
+                    $emConnection['dev_mode'],
+                    null,
+                    $cache
+                );
             }
 
-            return EntityManager::create($c->get('config')['kipchak.doctrine']['dbal']['connections'][$emConnection['connection']], $emConfig);
+            if (isset($emConnection['schema_filter_expression'])) {
+                $emConfig->setSchemaAssetsFilter(static function (string|AbstractAsset $assetName) use ($emConnection): bool {
+                    if ($assetName instanceof AbstractAsset) {
+                        $assetName = $assetName->getName();
+                    }
+
+                    return (bool) preg_match($emConnection['schema_filter_expression'], $assetName);
+                });
+            }
+
+            return new EntityManager(
+                DriverManager::getConnection(
+                    $c->get('config')['kipchak.doctrine']['dbal']['connections'][$emConnection['connection']]
+                )
+                , $emConfig
+            );
 
         });
     }
