@@ -30,16 +30,19 @@ class Response
             return $response->withHeader('Content-Type', 'application/json')
                 ->withAddedHeader('Cache-Control', $headersString . 'max-age=' . $cacheTTL)
                 ->withAddedHeader('ETag', md5($json))
+                ->withAddedHeader('X-Powered-By', 'Kipchak by Mamluk')
                 ->withStatus($code);
         }
 
         return $response->withHeader('Content-Type', 'application/json')
+            ->withAddedHeader('X-Powered-By', 'Kipchak by Mamluk')
             ->withStatus($code);
     }
 
     public static function redirect(ResponseInterface $response, string $url, int $code = 302): ResponseInterface
     {
         return $response->withStatus($code)
-            ->withHeader('Location', $url);
+            ->withHeader('Location', $url)
+            ->withAddedHeader('X-Powered-By', 'Kipchak by Mamluk');
     }
 }
