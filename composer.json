@@ -23,7 +23,6 @@
     "slim/psr7": "^1.6",
     "slim/slim": "^4.12",
     "symfony/cache": "^6.3",
-    "zircote/swagger-php": "^4.7",
     "mamluk/couchdb": "0.6",
     "cuyz/valinor": "^1.7"
   },

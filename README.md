@@ -63,7 +63,6 @@ Kipchak is the family within the Turkic world that rose to power as the Mamluk S
 * Laravel for the HTTP client
 * Monolog
 * Team CuyZ for Valinor (Object Mapping / Data Trasnfer Objects)
-* Robert Allen for the Swagger PHP library
 * Byran Horna for Slim Session
 
 For a full list of packages within Kipchak, see https://github.com/mam-luk/kipchak/blob/master/composer.json#L14.
