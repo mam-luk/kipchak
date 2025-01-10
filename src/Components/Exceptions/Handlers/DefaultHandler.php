@@ -32,8 +32,6 @@ class DefaultHandler extends ErrorHandler
             if ($statusCode >= 400) {
                 $statusCode = $exception->getCode();
             }
-
-
             if ($exception instanceof HttpNotFoundException) {
                 $type = self::RESOURCE_NOT_FOUND;
             } elseif ($exception instanceof HttpMethodNotAllowedException) {
@@ -41,7 +39,7 @@ class DefaultHandler extends ErrorHandler
             } elseif ($exception instanceof HttpUnauthorizedException) {
                 $type = self::UNAUTHENTICATED;
             } elseif ($exception instanceof HttpForbiddenException) {
-                $type = self::UNAUTHENTICATED;
+                $type = self::INSUFFICIENT_PRIVILEGES;
             } elseif ($exception instanceof HttpBadRequestException) {
                 $type = self::BAD_REQUEST;
             } elseif ($exception instanceof HttpNotImplementedException) {
