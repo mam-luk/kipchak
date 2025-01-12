@@ -10,11 +10,11 @@ use function Mamluk\Kipchak\config;
 
 $container = $app->getContainer();
 $api = $container->get('config')['kipchak.api'];
-$debug = (bool) $api['debug'] == true;
-$logDetails = isset($api['logExceptionDetails']) && (bool) $api['logExceptionDetails'];
+$logExceptions = isset($api['logExceptions']) && (bool) $api['logExceptions'];
+$logExceptionDetails = isset($api['logExceptionDetails']) && (bool) $api['logExceptionDetails'];
 
 // Add Application middleware
-$errorMiddleware = $app->addErrorMiddleware($debug, $debug, $logDetails);
+$errorMiddleware = $app->addErrorMiddleware($logExceptions, $logExceptions, $logExceptionDetails);
 
 // Configure error middleware
 $errorMiddleware->setDefaultErrorHandler(
